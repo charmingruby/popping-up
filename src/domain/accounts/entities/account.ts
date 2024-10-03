@@ -1,73 +1,73 @@
-import { Entity } from '@/core/entities/entity';
-import { Identifier } from '@/core/entities/identifier';
-import { Optional } from '@/core/types/optional';
+import { Entity } from '@/core/entities/entity'
+import { Identifier } from '@/core/entities/identifier'
+import { Optional } from '@/core/types/optional'
 
 export interface AccountProps {
-  username: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  createdAt: Date;
-  updatedAt?: Date | null;
+  username: string
+  firstName: string
+  lastName: string
+  email: string
+  password: string
+  createdAt: Date
+  updatedAt?: Date | null
 }
 
 export class Account extends Entity<AccountProps> {
   get username(): string {
-    return this.props.username;
+    return this.props.username
   }
 
   set username(value: string) {
-    this.touch();
-    this.props.username = value;
+    this.touch()
+    this.props.username = value
   }
 
   get firstName(): string {
-    return this.props.firstName;
+    return this.props.firstName
   }
 
   set firstName(value: string) {
-    this.touch();
-    this.props.firstName = value;
+    this.touch()
+    this.props.firstName = value
   }
 
   get lastName(): string {
-    return this.props.lastName;
+    return this.props.lastName
   }
 
   set lastName(value: string) {
-    this.touch();
-    this.props.lastName = value;
+    this.touch()
+    this.props.lastName = value
   }
 
   get email(): string {
-    return this.props.email;
+    return this.props.email
   }
 
   set email(value: string) {
-    this.touch();
-    this.props.email = value;
+    this.touch()
+    this.props.email = value
   }
 
   get password(): string {
-    return this.props.password;
+    return this.props.password
   }
 
   set password(value: string) {
-    this.touch();
-    this.props.password = value;
+    this.touch()
+    this.props.password = value
   }
 
   get createdAt(): Date {
-    return this.props.createdAt;
+    return this.props.createdAt
   }
 
   get updatedAt(): Date | null | undefined {
-    return this.props.updatedAt;
+    return this.props.updatedAt
   }
 
   touch() {
-    this.props.updatedAt = new Date();
+    this.props.updatedAt = new Date()
   }
 
   static create(props: Optional<AccountProps, 'createdAt'>, id?: Identifier) {
@@ -77,8 +77,8 @@ export class Account extends Entity<AccountProps> {
         createdAt: props.createdAt ?? new Date(),
       },
       id,
-    );
+    )
 
-    return account;
+    return account
   }
 }

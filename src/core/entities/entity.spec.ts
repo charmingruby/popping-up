@@ -2,25 +2,25 @@ import { Optional } from '../types/optional'
 import { Entity } from './entity'
 import { Identifier } from './identifier'
 
-interface RandomProps {
+interface RandomProperties {
   value: string
   key: string
 }
 
-class RandomEntity extends Entity<RandomProps> {
+class RandomEntity extends Entity<RandomProperties> {
   get key(): string {
-    return this.props.key
+    return this.Properties.key
   }
 
   get value(): string {
-    return this.props.value
+    return this.Properties.value
   }
 
-  static create(props: Optional<RandomProps, 'key'>, id?: Identifier) {
+  static create(Properties: Optional<RandomProperties, 'key'>, id?: Identifier) {
     const random = new RandomEntity(
       {
-        ...props,
-        key: `key-${props.value}`,
+        ...Properties,
+        key: `key-${Properties.value}`,
       },
       id,
     )

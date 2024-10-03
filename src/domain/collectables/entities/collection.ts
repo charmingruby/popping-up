@@ -3,7 +3,7 @@ import { Identifier } from '@/core/entities/identifier'
 import { Optional } from '@/core/types/optional'
 import { Collectable } from './collectable'
 
-interface CollectionProps {
+interface CollectionProperties {
   name: string
   theme: string
   description: string
@@ -14,42 +14,42 @@ interface CollectionProps {
   collectables: Collectable[]
 }
 
-export class Collection extends Entity<CollectionProps> {
+export class Collection extends Entity<CollectionProperties> {
   get name(): string {
-    return this.props.name
+    return this.Properties.name
   }
 
   get theme(): string {
-    return this.props.theme
+    return this.Properties.theme
   }
 
   get description(): string {
-    return this.props.description
+    return this.Properties.description
   }
 
   get totalCollectables(): number {
-    return this.props.totalCollectables
+    return this.Properties.totalCollectables
   }
 
   get totalInvestmentInCents(): number {
-    return this.props.totalInvestmentInCents
+    return this.Properties.totalInvestmentInCents
   }
 
   get createdAt(): Date {
-    return this.props.createdAt
+    return this.Properties.createdAt
   }
 
   get updatedAt(): Date | null | undefined {
-    return this.props.updatedAt
+    return this.Properties.updatedAt
   }
 
   get collectables(): Collectable[] {
-    return this.props.collectables
+    return this.Properties.collectables
   }
 
   static create(
-    props: Optional<
-      CollectionProps,
+    Properties: Optional<
+      CollectionProperties,
       | 'collectables'
       | 'totalCollectables'
       | 'totalInvestmentInCents'
@@ -59,11 +59,11 @@ export class Collection extends Entity<CollectionProps> {
   ) {
     const collection = new Collection(
       {
-        ...props,
-        totalInvestmentInCents: props.totalInvestmentInCents ?? 0,
-        totalCollectables: props.totalCollectables ?? 0,
-        createdAt: props.createdAt ?? new Date(),
-        collectables: props.collectables ?? [],
+        ...Properties,
+        totalInvestmentInCents: Properties.totalInvestmentInCents ?? 0,
+        totalCollectables: Properties.totalCollectables ?? 0,
+        createdAt: Properties.createdAt ?? new Date(),
+        collectables: Properties.collectables ?? [],
       },
       id,
     )

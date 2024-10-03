@@ -2,7 +2,7 @@ import { Entity } from '@/core/entities/entity'
 import { Identifier } from '@/core/entities/identifier'
 import { Optional } from '@/core/types/optional'
 
-export interface AccountProps {
+export interface AccountProperties {
   username: string
   firstName: string
   lastName: string
@@ -12,69 +12,69 @@ export interface AccountProps {
   updatedAt?: Date | null
 }
 
-export class Account extends Entity<AccountProps> {
+export class Account extends Entity<AccountProperties> {
   get username(): string {
-    return this.props.username
+    return this.Properties.username
   }
 
   set username(value: string) {
     this.touch()
-    this.props.username = value
+    this.Properties.username = value
   }
 
   get firstName(): string {
-    return this.props.firstName
+    return this.Properties.firstName
   }
 
   set firstName(value: string) {
     this.touch()
-    this.props.firstName = value
+    this.Properties.firstName = value
   }
 
   get lastName(): string {
-    return this.props.lastName
+    return this.Properties.lastName
   }
 
   set lastName(value: string) {
     this.touch()
-    this.props.lastName = value
+    this.Properties.lastName = value
   }
 
   get email(): string {
-    return this.props.email
+    return this.Properties.email
   }
 
   set email(value: string) {
     this.touch()
-    this.props.email = value
+    this.Properties.email = value
   }
 
   get password(): string {
-    return this.props.password
+    return this.Properties.password
   }
 
   set password(value: string) {
     this.touch()
-    this.props.password = value
+    this.Properties.password = value
   }
 
   get createdAt(): Date {
-    return this.props.createdAt
+    return this.Properties.createdAt
   }
 
   get updatedAt(): Date | null | undefined {
-    return this.props.updatedAt
+    return this.Properties.updatedAt
   }
 
   touch() {
-    this.props.updatedAt = new Date()
+    this.Properties.updatedAt = new Date()
   }
 
-  static create(props: Optional<AccountProps, 'createdAt'>, id?: Identifier) {
+  static create(Properties: Optional<AccountProperties, 'createdAt'>, id?: Identifier) {
     const account = new Account(
       {
-        ...props,
-        createdAt: props.createdAt ?? new Date(),
+        ...Properties,
+        createdAt: Properties.createdAt ?? new Date(),
       },
       id,
     )

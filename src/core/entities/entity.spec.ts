@@ -9,18 +9,18 @@ interface RandomProperties {
 
 class RandomEntity extends Entity<RandomProperties> {
   get key(): string {
-    return this.Properties.key
+    return this.props.key
   }
 
   get value(): string {
-    return this.Properties.value
+    return this.props.value
   }
 
-  static create(Properties: Optional<RandomProperties, 'key'>, id?: Identifier) {
+  static create(props: Optional<RandomProperties, 'key'>, id?: Identifier) {
     const random = new RandomEntity(
       {
-        ...Properties,
-        key: `key-${Properties.value}`,
+        ...props,
+        key: `key-${props.value}`,
       },
       id,
     )

@@ -18,41 +18,46 @@ interface CollectionProperties {
 
 export class Collection extends Entity<CollectionProperties> {
   get name(): string {
-    return this.Properties.name
+    return this.props.name
   }
 
   get theme(): string {
-    return this.Properties.theme
+    return this.props.theme
   }
 
   get description(): string {
-    return this.Properties.description
+    return this.props.description
   }
 
   get totalCollectables(): number {
-    return this.Properties.totalCollectables
+    return this.props.totalCollectables
   }
 
   get totalInvestmentInCents(): number {
-    return this.Properties.totalInvestmentInCents
+    return this.props.totalInvestmentInCents
   }
 
   get createdAt(): Date {
-    return this.Properties.createdAt
+    return this.props.createdAt
   }
 
   get updatedAt(): Date | null | undefined {
-    return this.Properties.updatedAt
+    return this.props.updatedAt
   }
 
   get collectables(): Collectable[] {
-    return this.Properties.collectables
+    return this.props.collectables
+  }
+
+  get tags(): Tag[] {
+    return this.props.tags
   }
 
   static create(
     props: Optional<
       CollectionProperties,
       | 'collectables'
+      | 'tags'
       | 'totalCollectables'
       | 'totalInvestmentInCents'
       | 'createdAt'

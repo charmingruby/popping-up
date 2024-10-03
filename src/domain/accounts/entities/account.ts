@@ -14,60 +14,60 @@ export interface AccountProperties {
 
 export class Account extends Entity<AccountProperties> {
   get username(): string {
-    return this.Properties.username
+    return this.props.username
   }
 
   set username(value: string) {
     this.touch()
-    this.Properties.username = value
+    this.props.username = value
   }
 
   get firstName(): string {
-    return this.Properties.firstName
+    return this.props.firstName
   }
 
   set firstName(value: string) {
     this.touch()
-    this.Properties.firstName = value
+    this.props.firstName = value
   }
 
   get lastName(): string {
-    return this.Properties.lastName
+    return this.props.lastName
   }
 
   set lastName(value: string) {
     this.touch()
-    this.Properties.lastName = value
+    this.props.lastName = value
   }
 
   get email(): string {
-    return this.Properties.email
+    return this.props.email
   }
 
   set email(value: string) {
     this.touch()
-    this.Properties.email = value
+    this.props.email = value
   }
 
   get password(): string {
-    return this.Properties.password
+    return this.props.password
   }
 
   set password(value: string) {
     this.touch()
-    this.Properties.password = value
+    this.props.password = value
   }
 
   get createdAt(): Date {
-    return this.Properties.createdAt
+    return this.props.createdAt
   }
 
   get updatedAt(): Date | null | undefined {
-    return this.Properties.updatedAt
+    return this.props.updatedAt
   }
 
   touch() {
-    this.Properties.updatedAt = new Date()
+    this.props.updatedAt = new Date()
   }
 
   static create(

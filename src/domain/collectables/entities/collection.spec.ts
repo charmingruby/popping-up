@@ -23,6 +23,7 @@ describe('[COLLECTABLES] Collection Entity', () => {
     expect(collection.totalCollectables).toEqual(totalCollectables)
     expect(collection.totalInvestmentInCents).toEqual(totalInvestmentInCents)
     expect(collection.collectables.length).toBe(0)
+    expect(collection.tags.length).toBe(0)
     expect(collection.createdAt).toEqual(expect.any(Date))
     expect(collection.updatedAt).toBeUndefined()
   })

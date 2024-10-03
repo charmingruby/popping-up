@@ -70,11 +70,14 @@ export class Account extends Entity<AccountProperties> {
     this.Properties.updatedAt = new Date()
   }
 
-  static create(Properties: Optional<AccountProperties, 'createdAt'>, id?: Identifier) {
+  static create(
+    props: Optional<AccountProperties, 'createdAt'>,
+    id?: Identifier,
+  ) {
     const account = new Account(
       {
-        ...Properties,
-        createdAt: Properties.createdAt ?? new Date(),
+        ...props,
+        createdAt: props.createdAt ?? new Date(),
       },
       id,
     )

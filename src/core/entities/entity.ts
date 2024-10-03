@@ -9,7 +9,7 @@ export class Entity<Props> {
   }
 
   protected constructor(props: Props, id?: Identifier) {
-    this._id = id || new Identifier();
+    this._id = id ?? new Identifier();
     this.props = props;
   }
 }

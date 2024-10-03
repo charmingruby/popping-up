@@ -8,6 +8,6 @@ export class Identifier {
   }
 
   constructor(id?: string) {
-    this._id = id || ulid();
+    this._id = id ?? ulid();
   }
 }

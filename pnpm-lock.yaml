@@ -91,6 +91,9 @@ devDependencies:
   typescript:
     specifier: ^4.7.4
     version: 4.9.5
+  ulid:
+    specifier: ^2.3.0
+    version: 2.3.0
   unplugin-swc:
     specifier: ^1.5.1
     version: 1.5.1(@swc/core@1.7.26)
@@ -5736,6 +5739,11 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       '@lukeed/csprng': 1.1.0
+
+  /ulid@2.3.0:
+    resolution: {integrity: sha512-keqHubrlpvT6G2wH0OEfSW4mquYRcbe/J8NMmveoQOjUqmo+hXtO+ORCpWhdbZ7k72UtY61BL7haGxW6enBnjw==}
+    hasBin: true
+    dev: true
 
   /universalify@2.0.1:
     resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}

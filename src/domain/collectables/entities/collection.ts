@@ -6,12 +6,14 @@ import { Tag } from './tag'
 
 interface CollectionProperties {
   name: string
+  ownerId: Identifier
   theme: string
   description: string
   totalCollectables: number
   totalInvestmentInCents: number
   createdAt: Date
   updatedAt?: Date | null
+
   collectables: Collectable[]
   tags: Tag[]
 }
@@ -45,12 +47,16 @@ export class Collection extends Entity<CollectionProperties> {
     return this.props.updatedAt
   }
 
-  get collectables(): Collectable[] {
-    return this.props.collectables
+  get ownerId(): string {
+    return this.props.ownerId.toString
   }
 
   get tags(): Tag[] {
     return this.props.tags
+  }
+
+  get collectables(): Collectable[] {
+    return this.props.collectables
   }
 
   static create(

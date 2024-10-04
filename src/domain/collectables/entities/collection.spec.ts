@@ -1,9 +1,11 @@
+import { Identifier } from '@/core/entities/identifier'
 import { Collection } from './collection'
 
 describe('[COLLECTABLES] Collection Entity', () => {
   const name = 'collection name'
   const theme = 'collection theme'
   const description = 'collection description'
+  const ownerId = new Identifier('owner-id')
   const totalCollectables = 0
   const totalInvestmentInCents = 10000
 
@@ -11,6 +13,7 @@ describe('[COLLECTABLES] Collection Entity', () => {
     const collection = Collection.create({
       name,
       theme,
+      ownerId,
       description,
       totalCollectables,
       totalInvestmentInCents,
@@ -19,6 +22,7 @@ describe('[COLLECTABLES] Collection Entity', () => {
     expect(collection).toBeDefined()
     expect(collection.name).toEqual(name)
     expect(collection.theme).toEqual(theme)
+    expect(collection.ownerId).toEqual(ownerId.toString)
     expect(collection.description).toEqual(description)
     expect(collection.totalCollectables).toEqual(totalCollectables)
     expect(collection.totalInvestmentInCents).toEqual(totalInvestmentInCents)

@@ -1,6 +1,5 @@
 import { Either } from '@/core/either'
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
-import { UseCaseResult } from '@/core/entities/usecase-result'
 
 export interface SignUpParams {
   username: string
@@ -10,15 +9,14 @@ export interface SignUpParams {
   password: string
 }
 
-export interface SignUpData {
-  accessToken: string
-  refreshToken: string
-}
-
-export type SignUpResult = UseCaseResult<SignUpData>
+export type SignUpResult = Either<
+  InvalidCredentialsError,
+  {
+    accessToken: string
+    refreshToken: string
+  }
+>
 
 export interface SignUpGateway {
-  perform(
-    params: SignUpParams,
-  ): Promise<Either<InvalidCredentialsError, SignUpResult>>
+  perform(params: SignUpParams): Promise<SignUpResult>
 }

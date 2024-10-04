@@ -1,5 +1,6 @@
 import { Identifier } from '@/core/entities/identifier'
 import { Collection } from './collection'
+import { Collectable } from './collectable'
 
 describe('[COLLECTABLES] Collection Entity', () => {
   const name = 'collection name'
@@ -29,5 +30,33 @@ describe('[COLLECTABLES] Collection Entity', () => {
     expect(sut.collectables.length).toBe(0)
     expect(sut.createdAt).toEqual(expect.any(Date))
     expect(sut.updatedAt).toBeUndefined()
+  })
+
+  it('should be able to attach a collectables to collection entity', () => {
+    const sut = Collection.create({
+      name,
+      theme,
+      ownerId,
+      description,
+      totalCollectables,
+      totalInvestmentInCents,
+    })
+
+    const collectableQuantity = 2
+
+    const collectables = Array.from(
+      { length: collectableQuantity },
+      (_, index) =>
+        Collectable.create({
+          name: `tag ${index}`,
+          collectionId: new Identifier('collectionId'),
+          description: `tag description ${index}`,
+        }),
+    )
+
+    sut.collectables = collectables
+
+    expect(sut.collectables).toEqual(collectables)
+    expect(sut.collectables.length).toEqual(collectableQuantity)
   })
 })

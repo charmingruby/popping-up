@@ -53,6 +53,10 @@ export class Collection extends Entity<CollectionProperties> {
     return this.props.collectables
   }
 
+  set collectables(collectables: Collectable[]) {
+    this.props.collectables = collectables
+  }
+
   static create(
     props: Optional<
       CollectionProperties,

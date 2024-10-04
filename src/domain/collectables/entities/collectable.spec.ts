@@ -1,5 +1,5 @@
 import { Identifier } from '@/core/entities/identifier'
-import { Collectable } from './collectable'
+import { Collectable, CollectableStatus } from './collectable'
 
 describe('[COLLECTABLES] Collectables Entity', () => {
   const name = 'collectable name'
@@ -15,11 +15,14 @@ describe('[COLLECTABLES] Collectables Entity', () => {
       referenceId,
     })
 
+    const defaultStatus: CollectableStatus = 'PENDING'
+
     expect(sut).toBeDefined()
     expect(sut.name).toEqual(name)
     expect(sut.description).toEqual(description)
     expect(sut.collectionId).toEqual(collectionId.toString)
     expect(sut.referenceId).toEqual(referenceId.toString)
+    expect(sut.status).toEqual(defaultStatus)
     expect(sut.tags.length).toBe(0)
     expect(sut.createdAt).toEqual(expect.any(Date))
     expect(sut.updatedAt).toBeUndefined()

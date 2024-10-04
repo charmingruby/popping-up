@@ -1,7 +1,7 @@
 import { HasherPort } from '@/domain/accounts/application/ports/hasher'
 
 export class FakeHasher implements HasherPort {
-  private generateHash(value) {
+  private generateHash(value: string) {
     return `hash-${value}`
   }
 

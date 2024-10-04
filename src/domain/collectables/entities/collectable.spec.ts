@@ -7,7 +7,7 @@ describe('[COLLECTABLES] Collectables Entity', () => {
   const collectionId = new Identifier('collectable collectionId')
   const referenceId = new Identifier('collectable referenceId')
 
-  it('should create a collection entity', () => {
+  it('should create a collectable entity', () => {
     const sut = Collectable.create({
       name,
       description,

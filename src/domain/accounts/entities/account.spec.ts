@@ -8,7 +8,7 @@ describe('[ACCOUNTS] Account Entity', () => {
   const password = 'password123'
 
   it('should create an account entity', () => {
-    const account = Account.create({
+    const sut = Account.create({
       username,
       firstName,
       lastName,
@@ -16,11 +16,11 @@ describe('[ACCOUNTS] Account Entity', () => {
       password,
     })
 
-    expect(account).toBeDefined()
-    expect(account.username).toBe(username)
-    expect(account.firstName).toBe(firstName)
-    expect(account.lastName).toBe(lastName)
-    expect(account.email).toBe(email)
-    expect(account.password).toBe(password)
+    expect(sut).toBeDefined()
+    expect(sut.username).toBe(username)
+    expect(sut.firstName).toBe(firstName)
+    expect(sut.lastName).toBe(lastName)
+    expect(sut.email).toBe(email)
+    expect(sut.password).toBe(password)
   })
 })

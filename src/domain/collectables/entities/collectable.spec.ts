@@ -8,20 +8,20 @@ describe('[COLLECTABLES] Collectables Entity', () => {
   const referenceId = new Identifier('collectable referenceId')
 
   it('should create a collection entity', () => {
-    const collectable = Collectable.create({
+    const sut = Collectable.create({
       name,
       description,
       collectionId,
       referenceId,
     })
 
-    expect(collectable).toBeDefined()
-    expect(collectable.name).toEqual(name)
-    expect(collectable.description).toEqual(description)
-    expect(collectable.collectionId).toEqual(collectionId.toString)
-    expect(collectable.referenceId).toEqual(referenceId.toString)
-    expect(collectable.tags.length).toBe(0)
-    expect(collectable.createdAt).toEqual(expect.any(Date))
-    expect(collectable.updatedAt).toBeUndefined()
+    expect(sut).toBeDefined()
+    expect(sut.name).toEqual(name)
+    expect(sut.description).toEqual(description)
+    expect(sut.collectionId).toEqual(collectionId.toString)
+    expect(sut.referenceId).toEqual(referenceId.toString)
+    expect(sut.tags.length).toBe(0)
+    expect(sut.createdAt).toEqual(expect.any(Date))
+    expect(sut.updatedAt).toBeUndefined()
   })
 })

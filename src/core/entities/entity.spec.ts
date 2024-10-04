@@ -33,10 +33,10 @@ describe('[CORE] Entity', () => {
   it('should be able to create an extended entity from core entity', () => {
     const value = 'test'
 
-    const random = RandomEntity.create({ value })
+    const sut = RandomEntity.create({ value })
 
-    expect(random).toBeInstanceOf(RandomEntity)
-    expect(random.key).toEqual(`key-${value}`)
-    expect(random.value).toEqual(value)
+    expect(sut).toBeInstanceOf(RandomEntity)
+    expect(sut.key).toEqual(`key-${value}`)
+    expect(sut.value).toEqual(value)
   })
 })

@@ -10,7 +10,7 @@ describe('[COLLECTABLES] Collection Entity', () => {
   const totalInvestmentInCents = 10000
 
   it('should create a collection entity', () => {
-    const collection = Collection.create({
+    const sut = Collection.create({
       name,
       theme,
       ownerId,
@@ -19,16 +19,16 @@ describe('[COLLECTABLES] Collection Entity', () => {
       totalInvestmentInCents,
     })
 
-    expect(collection).toBeDefined()
-    expect(collection.name).toEqual(name)
-    expect(collection.theme).toEqual(theme)
-    expect(collection.ownerId).toEqual(ownerId.toString)
-    expect(collection.description).toEqual(description)
-    expect(collection.totalCollectables).toEqual(totalCollectables)
-    expect(collection.totalInvestmentInCents).toEqual(totalInvestmentInCents)
-    expect(collection.collectables.length).toBe(0)
-    expect(collection.tags.length).toBe(0)
-    expect(collection.createdAt).toEqual(expect.any(Date))
-    expect(collection.updatedAt).toBeUndefined()
+    expect(sut).toBeDefined()
+    expect(sut.name).toEqual(name)
+    expect(sut.theme).toEqual(theme)
+    expect(sut.ownerId).toEqual(ownerId.toString)
+    expect(sut.description).toEqual(description)
+    expect(sut.totalCollectables).toEqual(totalCollectables)
+    expect(sut.totalInvestmentInCents).toEqual(totalInvestmentInCents)
+    expect(sut.collectables.length).toBe(0)
+    expect(sut.tags.length).toBe(0)
+    expect(sut.createdAt).toEqual(expect.any(Date))
+    expect(sut.updatedAt).toBeUndefined()
   })
 })

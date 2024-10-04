@@ -1,20 +1,47 @@
+import { left, right } from '@/core/either'
 import {
   SignUpGateway,
   SignUpParams,
   SignUpResult,
 } from '../gateways/sign-up-gateway'
-import { EncrypterPort } from '../ports/encrypter'
 import { HasherPort } from '../ports/hasher'
-import { AccountRepository } from '../repositories/account-repositories'
+import { AccountsRepository } from '../repositories/accounts-repository'
+import { ConflictError } from '../errors/conflict-error'
+import { Account } from '../../entities/account'
 
 export class SignUpCase implements SignUpGateway {
   constructor(
-    private readonly accountRepository: AccountRepository,
-    private readonly encrypter: EncrypterPort,
+    private readonly accountsRepository: AccountsRepository,
     private readonly hasher: HasherPort,
-) {}
+  ) {}
 
   async perform(params: SignUpParams): Promise<SignUpResult> {
-    throw new Error('Method not implemented.')
+    const { firstName, lastName, username, email, password } = params
+
+    const emailAlreadyTaken = await this.accountsRepository.findByEmail(email)
+    if (emailAlreadyTaken) {
+      return left(new ConflictError('email'))
+    }
+
+    const usernameAlreadyTaken = await this.accountsRepository.findByUsername(
+      username,
+    )
+    if (usernameAlreadyTaken) {
+      return left(new ConflictError('username'))
+    }
+
+    const passwordHash = await this.hasher.hash(password)
+
+    const account = Account.create({
+      firstName,
+      lastName,
+      username,
+      email,
+      password: passwordHash,
+    })
+
+    await this.accountsRepository.create(account)
+
+    return right({ account })
   }
 }

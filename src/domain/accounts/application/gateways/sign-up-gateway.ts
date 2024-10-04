@@ -1,5 +1,7 @@
 import { Either } from '@/core/either'
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
+import { ConflictError } from '../errors/conflict-error'
+import { Account } from '../../entities/account'
 
 export interface SignUpParams {
   username: string
@@ -10,10 +12,9 @@ export interface SignUpParams {
 }
 
 export type SignUpResult = Either<
-  InvalidCredentialsError,
+  InvalidCredentialsError | ConflictError,
   {
-    accessToken: string
-    refreshToken: string
+    account: Account
   }
 >
 

@@ -1,7 +1,7 @@
 import { Either } from '@/core/either'
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
 import { ConflictError } from '../errors/conflict-error'
-import { Account } from '../../entities/account'
+import { Account } from '../../enterprise/entities/account'
 
 export interface SignUpParams {
   username: string

@@ -7,7 +7,7 @@ import {
 import { HasherPort } from '../ports/hasher'
 import { AccountsRepository } from '../repositories/accounts-repository'
 import { ConflictError } from '../errors/conflict-error'
-import { Account } from '../../entities/account'
+import { Account } from '../../enterprise/entities/account'
 
 export class SignUpCase implements SignUpGateway {
   constructor(

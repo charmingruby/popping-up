@@ -34,7 +34,7 @@ export class Collectable extends Entity<CollectableProperties> {
     return this.props.referenceId.toString
   }
 
-  get status(): string {
+  get status(): CollectableStatus {
     return this.props.status
   }
 

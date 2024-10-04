@@ -1,4 +1,4 @@
-import { Account } from '../../entities/account'
+import { Account } from '../../enterprise/entities/account'
 
 export abstract class AccountsRepository {
   abstract findByUsername(username: string): Promise<Account | null>

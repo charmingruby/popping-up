@@ -38,6 +38,10 @@ export class Collectable extends Entity<CollectableProperties> {
     return this.props.status
   }
 
+  set status(status: CollectableStatus) {
+    this.props.status = status
+  }
+
   get createdAt(): Date {
     return this.props.createdAt
   }
@@ -48,6 +52,10 @@ export class Collectable extends Entity<CollectableProperties> {
 
   get tags(): Tag[] {
     return this.props.tags
+  }
+
+  set tags(tags: Tag[]) {
+    this.props.tags = tags
   }
 
   static create(

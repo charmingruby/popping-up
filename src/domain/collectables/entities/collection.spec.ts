@@ -27,7 +27,6 @@ describe('[COLLECTABLES] Collection Entity', () => {
     expect(sut.totalCollectables).toEqual(totalCollectables)
     expect(sut.totalInvestmentInCents).toEqual(totalInvestmentInCents)
     expect(sut.collectables.length).toBe(0)
-    expect(sut.tags.length).toBe(0)
     expect(sut.createdAt).toEqual(expect.any(Date))
     expect(sut.updatedAt).toBeUndefined()
   })

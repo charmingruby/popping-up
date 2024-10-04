@@ -2,7 +2,6 @@ import { Entity } from '@/core/entities/entity'
 import { Identifier } from '@/core/entities/identifier'
 import { Optional } from '@/core/types/optional'
 import { Collectable } from './collectable'
-import { Tag } from './tag'
 
 interface CollectionProperties {
   name: string
@@ -15,7 +14,6 @@ interface CollectionProperties {
   updatedAt?: Date | null
 
   collectables: Collectable[]
-  tags: Tag[]
 }
 
 export class Collection extends Entity<CollectionProperties> {
@@ -51,10 +49,6 @@ export class Collection extends Entity<CollectionProperties> {
     return this.props.ownerId.toString
   }
 
-  get tags(): Tag[] {
-    return this.props.tags
-  }
-
   get collectables(): Collectable[] {
     return this.props.collectables
   }
@@ -63,7 +57,6 @@ export class Collection extends Entity<CollectionProperties> {
     props: Optional<
       CollectionProperties,
       | 'collectables'
-      | 'tags'
       | 'totalCollectables'
       | 'totalInvestmentInCents'
       | 'createdAt'
@@ -77,7 +70,6 @@ export class Collection extends Entity<CollectionProperties> {
         totalCollectables: props.totalCollectables ?? 0,
         createdAt: props.createdAt ?? new Date(),
         collectables: props.collectables ?? [],
-        tags: props.tags ?? [],
       },
       id,
     )

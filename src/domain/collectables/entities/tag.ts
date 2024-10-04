@@ -1,12 +1,16 @@
 import { Entity } from '@/core/entities/entity'
 import { Optional } from '@/core/types/optional'
 import { Identifier } from '@/core/entities/identifier'
+import { Collectable } from './collectable'
 
 export interface TagProperties {
   name: string
   description: string
+  collectionId: Identifier
   createdAt: Date
   updatedAt?: Date | null
+
+  collectables: Collectable[]
 }
 
 export class Tag extends Entity<TagProperties> {
@@ -18,6 +22,10 @@ export class Tag extends Entity<TagProperties> {
     return this.props.description
   }
 
+  get collectionId(): string {
+    return this.props.collectionId.toString
+  }
+
   get createdAt(): Date {
     return this.props.createdAt
   }
@@ -26,10 +34,18 @@ export class Tag extends Entity<TagProperties> {
     return this.props.updatedAt
   }
 
-  static create(props: Optional<TagProperties, 'createdAt'>, id?: Identifier) {
+  get collectables(): Collectable[] {
+    return this.props.collectables
+  }
+
+  static create(
+    props: Optional<TagProperties, 'createdAt' | 'collectables'>,
+    id?: Identifier,
+  ) {
     const tag = new Tag(
       {
         ...props,
+        collectables: props.collectables ?? [],
         createdAt: props.createdAt ?? new Date(),
       },
       id,

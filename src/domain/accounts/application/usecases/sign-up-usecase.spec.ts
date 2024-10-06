@@ -4,17 +4,17 @@ import { InMemoryAccountsRepository } from 'test/repositories/in-memory-accounts
 
 import { ConflictError } from '../errors/conflict-error'
 import { SignUpParams } from '../gateways/sign-up-gateway'
-import { SignUpCase } from './sign-up-usecase'
+import { SignUpUseCase } from './sign-up-usecase'
 
 let fakeHasher: FakeHasher
 let inMemoryAccountRepository: InMemoryAccountsRepository
-let sut: SignUpCase
+let sut: SignUpUseCase
 
 describe('[ACCOUNTS] Sign Up Use Case', () => {
   beforeEach(() => {
     fakeHasher = new FakeHasher()
     inMemoryAccountRepository = new InMemoryAccountsRepository()
-    sut = new SignUpCase(inMemoryAccountRepository, fakeHasher)
+    sut = new SignUpUseCase(inMemoryAccountRepository, fakeHasher)
   })
   const username = 'john_doe'
   const firstName = 'John'

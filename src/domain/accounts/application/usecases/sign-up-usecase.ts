@@ -11,7 +11,7 @@ import { AccountPayload } from '../logic/account-payload'
 import { HasherPort } from '../ports/hasher'
 import { AccountsRepository } from '../repositories/accounts-repository'
 
-export class SignUpCase implements SignUpGateway {
+export class SignUpUseCase implements SignUpGateway {
   constructor(
     private readonly accountsRepository: AccountsRepository,
     private readonly hasher: HasherPort,

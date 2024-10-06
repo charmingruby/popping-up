@@ -1,7 +1,8 @@
 import { Entity } from '@/core/entities/entity'
-import { Tag } from './tag'
 import { Identifier } from '@/core/entities/identifier'
 import { Optional } from '@/core/types/optional'
+
+import { Tag } from './tag'
 
 export type CollectableStatus = 'ACQUIRED' | 'PENDING' | 'CANCELED'
 

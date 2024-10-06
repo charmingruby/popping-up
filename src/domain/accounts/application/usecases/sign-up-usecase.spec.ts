@@ -1,9 +1,10 @@
+import { makeAccount } from 'test/factories/make-account'
 import { FakeHasher } from 'test/fake/hasher'
 import { InMemoryAccountsRepository } from 'test/repositories/in-memory-accounts-repository'
-import { SignUpCase } from './sign-up-usecase'
-import { SignUpParams } from '../gateways/sign-up-gateway'
+
 import { ConflictError } from '../errors/conflict-error'
-import { makeAccount } from 'test/factories/make-account'
+import { SignUpParams } from '../gateways/sign-up-gateway'
+import { SignUpCase } from './sign-up-usecase'
 
 let fakeHasher: FakeHasher
 let inMemoryAccountRepository: InMemoryAccountsRepository

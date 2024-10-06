@@ -1,4 +1,5 @@
 import { Identifier } from '@/core/entities/identifier'
+
 import { Tag } from './tag'
 
 describe('[COLLECTABLES] Tags Entity', () => {

@@ -1,6 +1,7 @@
 import { Either } from '@/core/either'
-import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
+
 import { ConflictError } from '../errors/conflict-error'
+import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
 import { AccountPayload } from '../logic/account-payload'
 
 export interface SignUpParams {

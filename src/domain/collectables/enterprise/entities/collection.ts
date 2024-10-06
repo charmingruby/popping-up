@@ -1,6 +1,7 @@
 import { Entity } from '@/core/entities/entity'
 import { Identifier } from '@/core/entities/identifier'
 import { Optional } from '@/core/types/optional'
+
 import { Collectable } from './collectable'
 
 interface CollectionProperties {

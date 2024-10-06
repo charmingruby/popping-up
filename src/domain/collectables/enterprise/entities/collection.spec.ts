@@ -1,6 +1,7 @@
 import { Identifier } from '@/core/entities/identifier'
-import { Collection } from './collection'
+
 import { Collectable } from './collectable'
+import { Collection } from './collection'
 
 describe('[COLLECTABLES] Collection Entity', () => {
   const name = 'collection name'

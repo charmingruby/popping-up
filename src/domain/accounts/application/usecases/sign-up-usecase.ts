@@ -1,14 +1,15 @@
 import { left, right } from '@/core/either'
+
+import { Account } from '../../enterprise/entities/account'
+import { ConflictError } from '../errors/conflict-error'
 import {
   SignUpGateway,
   SignUpParams,
   SignUpResult,
 } from '../gateways/sign-up-gateway'
+import { AccountPayload } from '../logic/account-payload'
 import { HasherPort } from '../ports/hasher'
 import { AccountsRepository } from '../repositories/accounts-repository'
-import { ConflictError } from '../errors/conflict-error'
-import { Account } from '../../enterprise/entities/account'
-import { AccountPayload } from '../logic/account-payload'
 
 export class SignUpCase implements SignUpGateway {
   constructor(

@@ -1,5 +1,8 @@
 import { Identifier } from '@/core/entities/identifier'
-import { Account, AccountProperties } from '@/domain/accounts/entities/account'
+import {
+  Account,
+  AccountProperties,
+} from '@/domain/accounts/enterprise/entities/account'
 import { faker } from '@faker-js/faker'
 
 export function makeAccount(

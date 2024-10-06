@@ -8,6 +8,7 @@ import { HasherPort } from '../ports/hasher'
 import { AccountsRepository } from '../repositories/accounts-repository'
 import { ConflictError } from '../errors/conflict-error'
 import { Account } from '../../enterprise/entities/account'
+import { AccountPayload } from '../logic/account-payload'
 
 export class SignUpCase implements SignUpGateway {
   constructor(
@@ -42,6 +43,13 @@ export class SignUpCase implements SignUpGateway {
 
     await this.accountsRepository.create(account)
 
-    return right({ account })
+    const accountPayload: AccountPayload = {
+      username: account.username,
+      email: account.email,
+    }
+
+    return right({
+      accountPayload,
+    })
   }
 }

@@ -1,7 +1,7 @@
 import { Either } from '@/core/either'
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
 import { ConflictError } from '../errors/conflict-error'
-import { Account } from '../../enterprise/entities/account'
+import { AccountPayload } from '../logic/account-payload'
 
 export interface SignUpParams {
   username: string
@@ -14,7 +14,7 @@ export interface SignUpParams {
 export type SignUpResult = Either<
   InvalidCredentialsError | ConflictError,
   {
-    account: Account
+    accountPayload: AccountPayload
   }
 >
 

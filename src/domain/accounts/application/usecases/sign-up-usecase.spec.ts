@@ -2,8 +2,8 @@ import { FakeHasher } from 'test/fake/hasher'
 import { InMemoryAccountsRepository } from 'test/repositories/in-memory-accounts-repository'
 import { SignUpCase } from './sign-up-usecase'
 import { SignUpParams } from '../gateways/sign-up-gateway'
-import { makeAccount } from 'test/factories/make-account'
 import { ConflictError } from '../errors/conflict-error'
+import { makeAccount } from 'test/factories/make-account'
 
 let fakeHasher: FakeHasher
 let inMemoryAccountRepository: InMemoryAccountsRepository
@@ -35,14 +35,9 @@ describe('[ACCOUNTS] Sign Up Use Case', () => {
     expect(result.isLeft()).toBeFalsy()
     expect(result.isRight()).toBeTruthy()
     expect(result.value).toMatchObject({
-      account: expect.objectContaining({
+      accountPayload: expect.objectContaining({
         username,
-        firstName,
-        lastName,
         email,
-        password: expect.any(String),
-        createdAt: expect.any(Date),
-        updatedAt: undefined,
       }),
     })
   })

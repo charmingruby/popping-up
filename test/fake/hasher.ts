@@ -1,4 +1,4 @@
-import { HasherPort } from '@/domain/accounts/application/ports/hasher'
+import { HasherPort } from '@/domain/auth/application/ports/hasher'
 
 export class FakeHasher implements HasherPort {
   private generateHash(value: string) {

@@ -4,7 +4,7 @@ import { Identifier } from '@/core/entities/identifier'
 import {
   Account,
   AccountProperties,
-} from '@/domain/accounts/enterprise/entities/account'
+} from '@/domain/auth/enterprise/entities/account'
 
 export function makeAccount(
   override: Partial<AccountProperties> = {},

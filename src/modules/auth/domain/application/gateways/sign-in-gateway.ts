@@ -1,4 +1,4 @@
-import { Either } from '@/core/either'
+import { Either } from '@/common/core/either'
 
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
 import { AccountPayload } from '../logic/account-payload'

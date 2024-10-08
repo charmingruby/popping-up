@@ -1,4 +1,4 @@
-import { left, right } from '@/core/either'
+import { left, right } from '@/common/core/either'
 
 import { Account } from '../../enterprise/entities/account'
 import { ConflictError } from '../errors/conflict-error'

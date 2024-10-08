@@ -1,4 +1,4 @@
-import { left, right } from '@/core/either'
+import { left, right } from '@/common/core/either'
 
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
 import {

@@ -1,4 +1,4 @@
-import { Identifier } from '@/core/entities/identifier'
+import { Identifier } from '@/common/core/entities/identifier'
 
 import { Collectable } from './collectable'
 import { Collection } from './collection'

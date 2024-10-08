@@ -1,6 +1,6 @@
-import { Entity } from '@/core/entities/entity'
-import { Identifier } from '@/core/entities/identifier'
-import { Optional } from '@/core/types/optional'
+import { Entity } from '@/common/core/entities/entity'
+import { Identifier } from '@/common/core/entities/identifier'
+import { Optional } from '@/common/core/types/optional'
 
 export interface ReferenceProperties {
   title: string

@@ -1,10 +1,10 @@
 import { faker } from '@faker-js/faker'
 
-import { Identifier } from '@/core/entities/identifier'
+import { Identifier } from '@/common/core/entities/identifier'
 import {
   Account,
   AccountProperties,
-} from '@/domain/auth/enterprise/entities/account'
+} from '@/modules/auth/domain/enterprise/entities/account'
 
 export function makeAccount(
   override: Partial<AccountProperties> = {},

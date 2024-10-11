@@ -6,7 +6,7 @@ import { postgresDataSource } from './common/constants/datasource'
 import databaseConfig from './config/database.config'
 import { validateEnvironment } from './config/environment-validation'
 import { AuthModule } from './modules/auth/auth.module'
-import { Account } from './modules/auth/infra/database/typeorm/entities/typeorm-account'
+import { Account } from './modules/auth/domain/enterprise/entities/account'
 
 @Module({
   imports: [

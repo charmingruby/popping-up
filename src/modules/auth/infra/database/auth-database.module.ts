@@ -2,13 +2,13 @@ import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
 
 import { AccountsRepository } from '../../domain/application/repositories/accounts-repository'
-import { TypeORMAccount } from './typeorm/entities/typeorm-account'
-import { TypeORMAccountsRepository } from './typeorm/repository/typeorm-accounts-repository'
+import { TypeOrmAccount } from './typeorm/entities/typeorm-account'
+import { TypeOrmAccountsRepository } from './typeorm/repository/typeorm-accounts-repository'
 
 @Module({
-  imports: [TypeOrmModule.forFeature([TypeORMAccount])],
+  imports: [TypeOrmModule.forFeature([TypeOrmAccount])],
   providers: [
-    { useClass: TypeORMAccountsRepository, provide: AccountsRepository },
+    { useClass: TypeOrmAccountsRepository, provide: AccountsRepository },
   ],
   exports: [AccountsRepository],
 })

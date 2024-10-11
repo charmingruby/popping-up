@@ -5,14 +5,14 @@ import { Repository } from 'typeorm'
 import { AccountsRepository } from '@/modules/auth/domain/application/repositories/accounts-repository'
 import { Account as DomainAccount } from '@/modules/auth/domain/enterprise/entities/account'
 
-import { TypeORMAccount } from '../entities/typeorm-account'
-import { TypeORMAccountMapper } from '../mapper/typeorm-account-mapper'
+import { TypeOrmAccount } from '../entities/typeorm-account'
+import { TypeOrmAccountMapper } from '../mapper/typeorm-account-mapper'
 
 @Injectable()
-export class TypeORMAccountsRepository implements AccountsRepository {
+export class TypeOrmAccountsRepository implements AccountsRepository {
   constructor(
-    @InjectRepository(TypeORMAccount)
-    private readonly repository: Repository<TypeORMAccount>,
+    @InjectRepository(TypeOrmAccount)
+    private readonly repository: Repository<TypeOrmAccount>,
   ) {}
 
   async findByUsername(username: string) {
@@ -22,7 +22,7 @@ export class TypeORMAccountsRepository implements AccountsRepository {
       return null
     }
 
-    return TypeORMAccountMapper.toDomain(user)
+    return TypeOrmAccountMapper.toDomain(user)
   }
 
   async findByEmail(email: string) {
@@ -32,12 +32,12 @@ export class TypeORMAccountsRepository implements AccountsRepository {
       return null
     }
 
-    return TypeORMAccountMapper.toDomain(user)
+    return TypeOrmAccountMapper.toDomain(user)
   }
 
   async create(account: DomainAccount) {
     const res = await this.repository.insert(
-      TypeORMAccountMapper.toTypeORM(account),
+      TypeOrmAccountMapper.toTypeOrm(account),
     )
     console.log(res)
   }

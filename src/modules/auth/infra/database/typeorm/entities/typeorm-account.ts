@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm'
 
 @Entity({ name: 'accounts' })
-export class TypeORMAccount {
+export class TypeOrmAccount {
   @PrimaryColumn({
     name: 'id',
     type: 'varchar',

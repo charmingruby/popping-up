@@ -1,10 +1,10 @@
 import { Identifier } from '@/common/core/entities/identifier'
 import { Account } from '@/modules/auth/domain/enterprise/entities/account'
 
-import { TypeORMAccount } from '../entities/typeorm-account'
+import { TypeOrmAccount } from '../entities/typeorm-account'
 
-export class TypeORMAccountMapper {
-  static toTypeORM(account: Account): TypeORMAccount {
+export class TypeOrmAccountMapper {
+  static toTypeOrm(account: Account): TypeOrmAccount {
     return {
       id: account.id,
       username: account.username,
@@ -17,7 +17,7 @@ export class TypeORMAccountMapper {
     }
   }
 
-  static toDomain(account: TypeORMAccount): Account {
+  static toDomain(account: TypeOrmAccount): Account {
     const {
       id,
       firstName,

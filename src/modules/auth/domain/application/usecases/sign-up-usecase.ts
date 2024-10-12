@@ -1,3 +1,5 @@
+import { Injectable } from '@nestjs/common'
+
 import { left, right } from '@/common/core/either'
 
 import { Account } from '../../enterprise/entities/account'
@@ -11,6 +13,7 @@ import { AccountPayload } from '../logic/account-payload'
 import { HasherPort } from '../ports/hasher'
 import { AccountsRepository } from '../repositories/accounts-repository'
 
+@Injectable()
 export class SignUpUseCase implements SignUpGateway {
   constructor(
     private readonly accountsRepository: AccountsRepository,
@@ -25,9 +28,8 @@ export class SignUpUseCase implements SignUpGateway {
       return left(new ConflictError('email'))
     }
 
-    const usernameAlreadyTaken = await this.accountsRepository.findByUsername(
-      username,
-    )
+    const usernameAlreadyTaken =
+      await this.accountsRepository.findByUsername(username)
     if (usernameAlreadyTaken) {
       return left(new ConflictError('username'))
     }

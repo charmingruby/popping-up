@@ -1,0 +1,15 @@
+@baseUrl = http://localhost:3000
+
+# @name signup
+POST {{baseUrl}}/auth/signup
+Content-Type: application/json
+
+{
+    "firstName": "gustavo",
+    "lastName": "dias",
+    "username": "gustavo_dias",
+    "email": "gustavodiasa2121@gmail.com",
+    "password": "password123"
+}
+
+###

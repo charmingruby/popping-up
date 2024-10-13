@@ -15,6 +15,6 @@ export type SignInResult = Either<
   }
 >
 
-export interface SignInGateway {
-  perform(params: SignInParams): Promise<SignInResult>
+export abstract class SignInGateway {
+  abstract perform(params: SignInParams): Promise<SignInResult>
 }

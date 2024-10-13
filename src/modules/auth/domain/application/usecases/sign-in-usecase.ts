@@ -1,3 +1,5 @@
+import { Injectable } from '@nestjs/common'
+
 import { left, right } from '@/common/core/either'
 
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
@@ -10,6 +12,7 @@ import { AccountPayload } from '../logic/account-payload'
 import { HasherPort } from '../ports/hasher'
 import { AccountsRepository } from '../repositories/accounts-repository'
 
+@Injectable()
 export class SignInUseCase implements SignInGateway {
   constructor(
     private readonly accountsRepository: AccountsRepository,

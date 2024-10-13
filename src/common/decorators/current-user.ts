@@ -4,6 +4,11 @@ import {
   UnauthorizedException,
 } from '@nestjs/common'
 
+interface Payload {
+  email: string
+  username: string
+}
+
 export const ActiverUserId = createParamDecorator(
   (_, context: ExecutionContext) => {
     const request = context.switchToHttp().getRequest()
@@ -14,6 +19,14 @@ export const ActiverUserId = createParamDecorator(
       throw new UnauthorizedException()
     }
 
-    return userId
+    const payload: Payload = request.payload
+    if (!userId) {
+      throw new UnauthorizedException()
+    }
+
+    return {
+      userId,
+      payload,
+    }
   },
 )

@@ -13,3 +13,12 @@ Content-Type: application/json
 }
 
 ###
+
+# @name signin
+POST {{baseUrl}}/auth/signin
+Content-Type: application/json
+
+{
+    "email": "gustavodiasa2121@gmail.com",
+    "password": "password123"
+}

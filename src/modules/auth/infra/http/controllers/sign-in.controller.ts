@@ -9,27 +9,27 @@ import {
 } from '@nestjs/common'
 
 import { IsPublic } from '@/common/decorators/is-public'
-import { ConflictError } from '@/modules/auth/domain/application/errors/conflict-error'
-import { SignUpGateway } from '@/modules/auth/domain/application/gateways/sign-up-gateway'
+import { InvalidCredentialsError } from '@/modules/auth/domain/application/errors/invalid-credentials-error'
+import { SignInGateway } from '@/modules/auth/domain/application/gateways/sign-in-gateway'
 
 import { Tokenizer } from '../../security/auth/tokenizer'
-import { SignUpDto } from '../dto/sign-up.dto'
+import { SignInDto } from '../dto/sign-in.dto'
 
 @Controller()
-export class SignUpController {
+export class SignInController {
   constructor(
     private readonly tokenizer: Tokenizer,
-    private readonly useCase: SignUpGateway,
+    private readonly useCase: SignInGateway,
   ) {}
 
   @IsPublic()
-  @Post('/auth/signup')
-  @HttpCode(HttpStatus.CREATED)
-  async signUp(@Body() dto: SignUpDto) {
+  @Post('/auth/signin')
+  @HttpCode(HttpStatus.OK)
+  async signIn(@Body() dto: SignInDto) {
     const result = await this.useCase.perform(dto)
 
     if (result.isLeft()) {
-      if (result.value instanceof ConflictError) {
+      if (result.value instanceof InvalidCredentialsError) {
         return new UnauthorizedException({ message: result.value.message })
       }
 

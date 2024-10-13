@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigType } from '@nestjs/config'
+import { APP_GUARD } from '@nestjs/core'
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
 
 import { postgresDataSource } from './common/constants/datasource'
@@ -7,6 +8,7 @@ import databaseConfig from './config/database.config'
 import { validateEnvironment } from './config/environment-validation'
 import { AuthModule } from './modules/auth/auth.module'
 import { Account } from './modules/auth/domain/enterprise/entities/account'
+import { AuthGuard } from './modules/auth/infra/security/auth/guards/auth.guard'
 
 @Module({
   imports: [
@@ -36,6 +38,12 @@ import { Account } from './modules/auth/domain/enterprise/entities/account'
       }),
       inject: [databaseConfig.KEY],
     }),
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
   ],
 })
 export class AppModule {}

@@ -33,6 +33,7 @@ export class SignInUseCase implements SignInGateway {
     }
 
     const accountPayload: AccountPayload = {
+      accountId: account.id,
       username: account.username,
       email: account.email,
     }

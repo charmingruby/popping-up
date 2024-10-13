@@ -47,6 +47,7 @@ export class SignUpUseCase implements SignUpGateway {
     await this.accountsRepository.create(account)
 
     const accountPayload: AccountPayload = {
+      accountId: account.id,
       username: account.username,
       email: account.email,
     }

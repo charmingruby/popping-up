@@ -11,12 +11,14 @@ import { Account } from './modules/auth/domain/enterprise/entities/account'
 @Module({
   imports: [
     AuthModule,
+    ConfigModule.forRoot({
+      validationSchema: validateEnvironment(),
+      isGlobal: true,
+    }),
     TypeOrmModule.forRootAsync({
       imports: [
         ConfigModule.forRoot({
           load: [databaseConfig],
-          validationSchema: validateEnvironment(),
-          isGlobal: true,
         }),
       ],
       useFactory: (

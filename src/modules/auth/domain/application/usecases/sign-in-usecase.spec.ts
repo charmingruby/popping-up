@@ -41,6 +41,7 @@ describe('[ACCOUNTS] Sign In Use Case', async () => {
       accountPayload: expect.objectContaining({
         email,
         username,
+        accountId: expect.any(String),
       }),
     })
   })

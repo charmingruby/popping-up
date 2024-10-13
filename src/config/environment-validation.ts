@@ -35,6 +35,10 @@ class Env {
   @IsBoolean()
   @IsNotEmpty()
   databaseAutoLoad = true
+
+  @IsString()
+  @IsNotEmpty()
+  jwtSecretKey: string
 }
 
 const env: Env = plainToInstance(Env, {
@@ -45,6 +49,7 @@ const env: Env = plainToInstance(Env, {
   databasePort: +process.env.DATABASE_PORT,
   databaseSync: process.env.DATABASE_SYNC === 'true',
   databaseAutoLoad: process.env.DATABASE_AUTOLOAD === 'true',
+  jwtSecretKey: process.env.JWT_SECRET_KEY,
 })
 
 export const validateEnvironment = () => {

@@ -1,15 +1,5 @@
 import { registerAs } from '@nestjs/config'
 
-export interface DatabaseConfig {
-  host: string
-  username: string
-  password: string
-  database: string
-  port: number
-  synchronize: boolean
-  autoLoadEntities: boolean
-}
-
 export default registerAs('database', () => ({
   host: process.env.DATABASE_HOST || 'localhost',
   username: process.env.DATABASE_USER || 'postgres',

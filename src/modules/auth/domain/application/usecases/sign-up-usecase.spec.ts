@@ -39,6 +39,7 @@ describe('[ACCOUNTS] Sign Up Use Case', () => {
       accountPayload: expect.objectContaining({
         username,
         email,
+        accountId: expect.any(String),
       }),
     })
   })

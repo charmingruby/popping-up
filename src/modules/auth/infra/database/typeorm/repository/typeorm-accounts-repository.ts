@@ -36,9 +36,6 @@ export class TypeOrmAccountsRepository implements AccountsRepository {
   }
 
   async create(account: DomainAccount) {
-    const res = await this.repository.insert(
-      TypeOrmAccountMapper.toTypeOrm(account),
-    )
-    console.log(res)
+    await this.repository.insert(TypeOrmAccountMapper.toTypeOrm(account))
   }
 }

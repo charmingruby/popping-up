@@ -1,8 +1,12 @@
 @baseUrl = http://localhost:3000
+@accessToken = {{signin.response.body.accessToken}}
+@refreshAccessToken = {{refresh.response.body.accessToken}}
+@refreshToken = {{signin.response.body.refreshToken}}
 
 # @name signup
 POST {{baseUrl}}/auth/signup
 Content-Type: application/json
+Authorization: Bearer {{{refreshAccessToken}}
 
 {
     "firstName": "gustavo",
@@ -21,4 +25,14 @@ Content-Type: application/json
 {
     "email": "gustavodiasa2121@gmail.com",
     "password": "password123"
+}
+
+###
+
+# @name refresh
+POST {{baseUrl}}/auth/refresh
+Content-Type: application/json
+
+{
+    "refreshToken": "{{refreshToken}}"
 }

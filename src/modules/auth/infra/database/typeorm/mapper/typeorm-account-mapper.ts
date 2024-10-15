@@ -14,6 +14,7 @@ export class TypeOrmAccountMapper {
       password: account.password,
       createdAt: account.createdAt,
       updatedAt: account.updatedAt,
+      refreshTokens: [],
     }
   }
 

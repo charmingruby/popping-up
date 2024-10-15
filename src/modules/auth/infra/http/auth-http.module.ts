@@ -7,7 +7,8 @@ import { SignInUseCase } from '../../domain/application/usecases/sign-in-usecase
 import { SignUpUseCase } from '../../domain/application/usecases/sign-up-usecase'
 import { BcryptHasherAdapter } from '../adapters/hasher/bcrypt-adapter'
 import { AuthDatabaseModule } from '../database/auth-database.module'
-import { Tokenizer } from '../security/auth/tokenizer'
+import { Tokenizer } from '../security/auth/tokens/tokenizer'
+import { RefreshController } from './controllers/refresh.controller'
 import { SignInController } from './controllers/sign-in.controller'
 import { SignUpController } from './controllers/sign-up.controller'
 
@@ -28,6 +29,6 @@ import { SignUpController } from './controllers/sign-up.controller'
       provide: SignInGateway,
     },
   ],
-  controllers: [SignUpController, SignInController],
+  controllers: [SignUpController, SignInController, RefreshController],
 })
 export class AuthHttpModule {}

@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm'
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryColumn,
+  UpdateDateColumn,
+} from 'typeorm'
+
+import { TypeOrmRefreshToken } from './typeorm-refresh-token'
 
 @Entity({ name: 'accounts' })
 export class TypeOrmAccount {
@@ -60,4 +68,7 @@ export class TypeOrmAccount {
     onUpdate: 'CURRENT_TIMESTAMP(6)',
   })
   updatedAt: Date
+
+  @OneToMany(() => TypeOrmRefreshToken, (refreshToken) => refreshToken.account)
+  refreshTokens: TypeOrmRefreshToken[]
 }

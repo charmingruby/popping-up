@@ -12,7 +12,7 @@ import { IsPublic } from '@/common/decorators/is-public'
 import { ConflictError } from '@/modules/auth/domain/application/errors/conflict-error'
 import { SignUpGateway } from '@/modules/auth/domain/application/gateways/sign-up-gateway'
 
-import { Tokenizer } from '../../security/auth/tokenizer'
+import { Tokenizer } from '../../security/auth/tokens/tokenizer'
 import { SignUpDto } from '../dto/sign-up.dto'
 
 @Controller()
@@ -25,7 +25,7 @@ export class SignUpController {
   @IsPublic()
   @Post('/auth/signup')
   @HttpCode(HttpStatus.CREATED)
-  async signUp(@Body() dto: SignUpDto) {
+  async handle(@Body() dto: SignUpDto) {
     const result = await this.useCase.perform(dto)
 
     if (result.isLeft()) {
@@ -36,10 +36,16 @@ export class SignUpController {
       return new InternalServerErrorException()
     }
 
-    const { accessToken, refreshToken } = await this.tokenizer.generateTokens(
+    const tokensResult = await this.tokenizer.performTokensGeneration(
       result.value.accountPayload,
     )
+    if (tokensResult.isLeft()) {
+      return new InternalServerErrorException()
+    }
 
-    return { accessToken, refreshToken }
+    return {
+      accessToken: tokensResult.value.accessToken,
+      refreshToken: tokensResult.value.refreshToken,
+    }
   }
 }

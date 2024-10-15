@@ -1,1 +1,1 @@
-export const postgresDataSource = 'postgres'
+export const POSTGRES_DATASOURCE = 'postgres'

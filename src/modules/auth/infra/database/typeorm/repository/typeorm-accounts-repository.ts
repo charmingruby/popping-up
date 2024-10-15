@@ -35,6 +35,16 @@ export class TypeOrmAccountsRepository implements AccountsRepository {
     return TypeOrmAccountMapper.toDomain(user)
   }
 
+  async findById(id: string) {
+    const user = await this.repository.findOneBy({ id })
+
+    if (!user) {
+      return null
+    }
+
+    return TypeOrmAccountMapper.toDomain(user)
+  }
+
   async create(account: DomainAccount) {
     await this.repository.insert(TypeOrmAccountMapper.toTypeOrm(account))
   }

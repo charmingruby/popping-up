@@ -5,7 +5,7 @@ import { Repository } from 'typeorm'
 import { AccountsRepository } from '@/modules/auth/domain/application/repositories/accounts-repository'
 import { Account as DomainAccount } from '@/modules/auth/domain/enterprise/entities/account'
 
-import { TypeOrmAccount } from '../entities/typeorm-account'
+import { TypeOrmAccount } from '../entities/typeorm-account.entity'
 import { TypeOrmAccountMapper } from '../mapper/typeorm-account-mapper'
 
 @Injectable()

@@ -6,7 +6,7 @@ import {
   RefreshToken,
   RefreshTokenRepository,
 } from '../../../security/auth/tokens/refresh-token'
-import { TypeOrmRefreshToken } from '../entities/typeorm-refresh-token'
+import { TypeOrmRefreshToken } from '../entities/typeorm-refresh-token.entity'
 
 @Injectable()
 export class TypeOrmRefreshTokensRepository implements RefreshTokenRepository {

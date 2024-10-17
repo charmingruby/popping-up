@@ -11,10 +11,11 @@ import { Identifier } from '@/common/core/entities/identifier'
 import { AccountPayload } from '@/modules/auth/domain/application/logic/account-payload'
 import { AccountsRepository } from '@/modules/auth/domain/application/repositories/accounts-repository'
 
+import { InvalidTokenError } from './errors/invalid-token-error'
 import { RefreshToken, RefreshTokenRepository } from './refresh-token'
 
 export type RefreshTokenResult = Either<
-  Error,
+  Error | InvalidTokenError,
   { accessToken: string; refreshToken: string }
 >
 
@@ -58,13 +59,13 @@ export class Tokenizer {
       const refreshToken =
         await this.refreshTokensRepository.findById(refreshTokenId)
       if (!refreshToken) {
-        return left(new Error('Invalid refresh token.'))
+        return left(new InvalidTokenError('refresh'))
       }
 
       await this.refreshTokensRepository.deleteById(refreshTokenId)
 
       if (Date.now() > refreshToken.expiresAt.getTime()) {
-        return left(new Error('Invalid refresh token.'))
+        return left(new InvalidTokenError('refresh'))
       }
 
       const account = await this.accountsRepository.findById(

@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm'
 
-import { TypeOrmRefreshToken } from './typeorm-refresh-token'
+import { TypeOrmRefreshToken } from './typeorm-refresh-token.entity'
 
 @Entity({ name: 'accounts' })
 export class TypeOrmAccount {

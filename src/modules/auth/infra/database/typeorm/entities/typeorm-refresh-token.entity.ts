@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm'
 
-import { TypeOrmAccount } from './typeorm-account'
+import { TypeOrmAccount } from './typeorm-account.entity'
 
 @Entity({ name: 'refresh_tokens' })
 export class TypeOrmRefreshToken {

@@ -1,7 +1,7 @@
 import { Identifier } from '@/common/core/entities/identifier'
 import { Account } from '@/modules/auth/domain/enterprise/entities/account'
 
-import { TypeOrmAccount } from '../entities/typeorm-account'
+import { TypeOrmAccount } from '../entities/typeorm-account.entity'
 
 export class TypeOrmAccountMapper {
   static toTypeOrm(account: Account): TypeOrmAccount {

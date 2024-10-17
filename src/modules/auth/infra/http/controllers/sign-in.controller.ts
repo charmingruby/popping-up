@@ -30,17 +30,17 @@ export class SignInController {
 
     if (result.isLeft()) {
       if (result.value instanceof InvalidCredentialsError) {
-        return new UnauthorizedException({ message: result.value.message })
+        throw new UnauthorizedException({ message: result.value.message })
       }
 
-      return new InternalServerErrorException()
+      throw new InternalServerErrorException()
     }
 
     const tokensResult = await this.tokenizer.performTokensGeneration(
       result.value.accountPayload,
     )
     if (tokensResult.isLeft()) {
-      return new InternalServerErrorException()
+      throw new InternalServerErrorException()
     }
 
     return {

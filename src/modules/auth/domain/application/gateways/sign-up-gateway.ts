@@ -1,6 +1,6 @@
 import { Either } from '@/common/core/either'
 
-import { ConflictError } from '../errors/conflict-error'
+import { ConflictError } from '../../../../../common/core/errors/conflict-error'
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
 import { AccountPayload } from '../logic/account-payload'
 

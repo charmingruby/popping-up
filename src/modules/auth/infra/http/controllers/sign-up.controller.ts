@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common'
 
 import { IsPublic } from '@/common/decorators/is-public'
-import { ConflictError } from '@/modules/auth/domain/application/errors/conflict-error'
+import { ConflictError } from '@/common/core/errors/conflict-error'
 import { SignUpGateway } from '@/modules/auth/domain/application/gateways/sign-up-gateway'
 
 import { Tokenizer } from '../../security/auth/tokens/tokenizer'

@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common'
 import { left, right } from '@/common/core/either'
 
 import { Account } from '../../enterprise/entities/account'
-import { ConflictError } from '../errors/conflict-error'
+import { ConflictError } from '../../../../../common/core/errors/conflict-error'
 import {
   SignUpGateway,
   SignUpParams,

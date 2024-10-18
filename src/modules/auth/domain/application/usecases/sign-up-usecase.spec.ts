@@ -2,7 +2,7 @@ import { makeAccount } from 'test/factories/make-account'
 import { FakeHasher } from 'test/fake/hasher'
 import { InMemoryAccountsRepository } from 'test/repositories/in-memory-accounts-repository'
 
-import { ConflictError } from '../errors/conflict-error'
+import { ConflictError } from '../../../../../common/core/errors/conflict-error'
 import { SignUpParams } from '../gateways/sign-up-gateway'
 import { SignUpUseCase } from './sign-up-usecase'
 

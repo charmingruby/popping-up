@@ -1,0 +1,60 @@
+import { InMemoryCollectionsRepository } from 'test/repositories/in-memory-collections-repository'
+
+import { Identifier } from '@/common/core/entities/identifier'
+import { ResourceAlreadyExistsError } from '@/common/core/errors/resource-already-exists-error'
+
+import { Collection } from '../../entities/collection'
+import { CreateCollectionUseCase } from './create-collection-usecase'
+
+let inMemoryCollectionsRepository: InMemoryCollectionsRepository
+let sut: CreateCollectionUseCase
+
+describe('[COLLECTIONS] Create Collection Use Case', () => {
+  beforeEach(() => {
+    inMemoryCollectionsRepository = new InMemoryCollectionsRepository()
+    inMemoryCollectionsRepository.items = []
+    sut = new CreateCollectionUseCase(inMemoryCollectionsRepository)
+  })
+
+  it('should be able to create a new collection', async () => {
+    const name = 'my collection'
+
+    const result = await sut.perform({
+      name,
+      description: 'my collection description',
+      theme: 'my collection theme',
+      ownerId: new Identifier('owner-id').toString,
+    })
+
+    expect(result.isRight()).toBeTruthy()
+    expect(result.value).toBe(null)
+    expect(inMemoryCollectionsRepository.items.length).toBe(1)
+    expect(inMemoryCollectionsRepository.items[0].name).toBe(name)
+  })
+
+  it('should be not able to create a new collection with an already used name by an account', async () => {
+    const conflictingName = 'conflicting collection'
+    const description = 'collection description'
+    const theme = 'collection theme'
+    const ownerId = new Identifier('owner-id')
+
+    inMemoryCollectionsRepository.items.push(
+      Collection.create({
+        name: conflictingName,
+        description,
+        theme,
+        ownerId,
+      }),
+    )
+
+    const result = await sut.perform({
+      name: conflictingName,
+      description,
+      theme,
+      ownerId: ownerId.toString,
+    })
+
+    expect(result.isLeft()).toBeTruthy()
+    expect(result.value).toBeInstanceOf(ResourceAlreadyExistsError)
+  })
+})

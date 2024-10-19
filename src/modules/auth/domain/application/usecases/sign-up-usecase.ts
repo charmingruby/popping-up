@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common'
 
 import { left, right } from '@/common/core/either'
 
-import { Account } from '../../enterprise/entities/account'
 import { ConflictError } from '../../../../../common/core/errors/conflict-error'
+import { Account } from '../../enterprise/entities/account'
 import {
   SignUpGateway,
   SignUpParams,

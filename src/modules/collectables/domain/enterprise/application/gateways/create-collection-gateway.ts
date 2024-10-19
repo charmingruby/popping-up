@@ -1,5 +1,5 @@
 import { Either } from '@/common/core/either'
-import { ConflictError } from '@/common/core/errors/conflict-error'
+import { ResourceAlreadyExistsError } from '@/common/core/errors/resource-already-exists-error'
 import { ResourceNotFoundError } from '@/common/core/errors/resource-not-found-error'
 
 export interface CreateCollectionParams {
@@ -10,8 +10,8 @@ export interface CreateCollectionParams {
 }
 
 export type CreateCollectionResult = Either<
-  ResourceNotFoundError | ConflictError,
-  CreateCollectionParams
+  ResourceNotFoundError | ResourceAlreadyExistsError,
+  null
 >
 
 export abstract class CreateCollectionGateway {

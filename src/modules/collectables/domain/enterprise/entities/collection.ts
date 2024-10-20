@@ -4,7 +4,7 @@ import { Optional } from '@/common/core/types/optional'
 
 import { Collectable } from './collectable'
 
-interface CollectionProperties {
+export interface CollectionProperties {
   name: string
   ownerId: Identifier
   theme: string

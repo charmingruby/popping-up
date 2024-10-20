@@ -1,9 +1,9 @@
+import { makeCollection } from 'test/factories/make-collection'
 import { InMemoryCollectionsRepository } from 'test/repositories/in-memory-collections-repository'
 
 import { Identifier } from '@/common/core/entities/identifier'
 import { ResourceAlreadyExistsError } from '@/common/core/errors/resource-already-exists-error'
 
-import { Collection } from '../../entities/collection'
 import { CreateCollectionUseCase } from './create-collection-usecase'
 
 let inMemoryCollectionsRepository: InMemoryCollectionsRepository
@@ -34,23 +34,16 @@ describe('[COLLECTIONS] Create Collection Use Case', () => {
 
   it('should be not able to create a new collection with an already used name by an account', async () => {
     const conflictingName = 'conflicting collection'
-    const description = 'collection description'
-    const theme = 'collection theme'
     const ownerId = new Identifier('owner-id')
 
     inMemoryCollectionsRepository.items.push(
-      Collection.create({
-        name: conflictingName,
-        description,
-        theme,
-        ownerId,
-      }),
+      makeCollection({ name: conflictingName, ownerId }),
     )
 
     const result = await sut.perform({
       name: conflictingName,
-      description,
-      theme,
+      description: 'collection description',
+      theme: 'collection theme',
       ownerId: ownerId.toString,
     })
 

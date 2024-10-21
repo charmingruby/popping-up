@@ -6,5 +6,10 @@ export abstract class CollectionsRepository {
     ownerId: string,
   ): Promise<Collection | null>
 
+  abstract findByIdAndOwnerId(
+    ownerId: string,
+    collectionId: string,
+  ): Promise<Collection | null>
+
   abstract create(collection: Collection): Promise<void>
 }

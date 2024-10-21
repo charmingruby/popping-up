@@ -19,6 +19,21 @@ export class InMemoryCollectionsRepository implements CollectionsRepository {
     return collection
   }
 
+  async findByIdAndOwnerId(
+    ownerId: string,
+    collectionId: string,
+  ): Promise<Collection | null> {
+    const collection = this.items.find(
+      (c) => c.ownerId === ownerId && c.id === collectionId,
+    )
+
+    if (!collection) {
+      return null
+    }
+
+    return collection
+  }
+
   async create(collection: Collection): Promise<void> {
     this.items.push(collection)
   }

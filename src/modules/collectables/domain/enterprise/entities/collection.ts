@@ -22,12 +22,24 @@ export class Collection extends Entity<CollectionProperties> {
     return this.props.name
   }
 
+  set name(name: string) {
+    this.props.name = name
+  }
+
   get theme(): string {
     return this.props.theme
   }
 
+  set theme(theme: string) {
+    this.props.theme = theme
+  }
+
   get description(): string {
     return this.props.description
+  }
+
+  set description(description: string) {
+    this.props.description = description
   }
 
   get totalCollectables(): number {

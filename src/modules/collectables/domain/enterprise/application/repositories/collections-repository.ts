@@ -12,4 +12,5 @@ export abstract class CollectionsRepository {
   ): Promise<Collection | null>
 
   abstract create(collection: Collection): Promise<void>
+  abstract save(collection: Collection): Promise<void>
 }

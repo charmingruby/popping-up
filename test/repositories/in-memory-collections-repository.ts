@@ -19,6 +19,16 @@ export class InMemoryCollectionsRepository implements CollectionsRepository {
     return collection
   }
 
+  async save(collection: Collection): Promise<void> {
+    const index = this.items.findIndex((c) => c.id === collection.id)
+
+    if (index === -1) {
+      return null
+    }
+
+    this.items[index] = collection
+  }
+
   async findByIdAndOwnerId(
     ownerId: string,
     collectionId: string,

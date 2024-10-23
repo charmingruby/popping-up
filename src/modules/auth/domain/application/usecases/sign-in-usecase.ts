@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 
 import { left, right } from '@/common/core/either'
 
-import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
+import { InvalidCredentialsException } from '../exceptions/invalid-credentials.exception'
 import {
   SignInGateway,
   SignInParams,
@@ -24,7 +24,7 @@ export class SignInUseCase implements SignInGateway {
 
     const account = await this.accountsRepository.findByEmail(email)
     if (!account) {
-      return left(new InvalidCredentialsError())
+      return left(new InvalidCredentialsException())
     }
 
     const passwordMatches = await this.hasher.compare(
@@ -32,7 +32,7 @@ export class SignInUseCase implements SignInGateway {
       account.password,
     )
     if (!passwordMatches) {
-      return left(new InvalidCredentialsError())
+      return left(new InvalidCredentialsException())
     }
 
     const accountPayload: AccountPayload = {

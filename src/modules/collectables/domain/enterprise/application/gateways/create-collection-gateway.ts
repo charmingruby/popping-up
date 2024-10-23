@@ -1,6 +1,8 @@
 import { Either } from '@/common/core/either'
-import { ResourceAlreadyExistsError } from '@/common/core/errors/resource-already-exists-error'
-import { ResourceNotFoundError } from '@/common/core/errors/resource-not-found-error'
+import { ResourceAlreadyExistsException } from '@/common/core/exceptions/resource-already-exists.exception'
+
+
+import { ResourceNotFoundException } from '@/common/core/exceptions/resource-not-found.exception'
 
 export interface CreateCollectionParams {
   name: string
@@ -10,7 +12,7 @@ export interface CreateCollectionParams {
 }
 
 export type CreateCollectionResult = Either<
-  ResourceNotFoundError | ResourceAlreadyExistsError,
+  ResourceNotFoundException | ResourceAlreadyExistsException,
   null
 >
 

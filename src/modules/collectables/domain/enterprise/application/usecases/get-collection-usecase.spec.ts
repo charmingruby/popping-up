@@ -1,8 +1,8 @@
 import { makeCollection } from 'test/factories/make-collection'
 import { InMemoryCollectionsRepository } from 'test/repositories/in-memory-collections-repository'
 
-import { Identifier } from '@/common/core/entities/identifier'
-import { ResourceNotFoundError } from '@/common/core/errors/resource-not-found-error'
+import { Identifier } from '@/common/core/entities/identifier.entity'
+import { ResourceNotFoundException } from '@/common/core/exceptions/resource-not-found.exception'
 
 import { GetCollectionUseCase } from './get-collection-usecase'
 
@@ -39,7 +39,7 @@ describe('[COLLECTIONS] Get Collection Use Case', () => {
     })
 
     expect(result.isLeft()).toBeTruthy()
-    expect(result.value).toBeInstanceOf(ResourceNotFoundError)
+    expect(result.value).toBeInstanceOf(ResourceNotFoundException)
   })
 
   it("should be not able to get a collection that doesn't owns", async () => {
@@ -53,6 +53,6 @@ describe('[COLLECTIONS] Get Collection Use Case', () => {
     })
 
     expect(result.isLeft()).toBeTruthy()
-    expect(result.value).toBeInstanceOf(ResourceNotFoundError)
+    expect(result.value).toBeInstanceOf(ResourceNotFoundException)
   })
 })

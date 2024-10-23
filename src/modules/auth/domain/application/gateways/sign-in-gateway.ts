@@ -1,6 +1,6 @@
 import { Either } from '@/common/core/either'
 
-import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
+import { InvalidCredentialsException } from '../exceptions/invalid-credentials.exception'
 import { AccountPayload } from '../logic/account-payload'
 
 export interface SignInParams {
@@ -9,7 +9,7 @@ export interface SignInParams {
 }
 
 export type SignInResult = Either<
-  InvalidCredentialsError,
+  InvalidCredentialsException,
   {
     accountPayload: AccountPayload
   }

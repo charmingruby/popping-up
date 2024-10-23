@@ -1,5 +1,5 @@
-import { Entity } from '@/common/core/entities/entity'
-import { Identifier } from '@/common/core/entities/identifier'
+import { Entity } from '@/common/core/entities/base.entity'
+import { Identifier } from '@/common/core/entities/identifier.entity'
 import { Optional } from '@/common/core/types/optional'
 
 export interface ReferenceProperties {

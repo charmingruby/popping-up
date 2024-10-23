@@ -1,5 +1,5 @@
 import { Either } from '@/common/core/either'
-import { ResourceNotFoundError } from '@/common/core/errors/resource-not-found-error'
+import { ResourceNotFoundException } from '@/common/core/exceptions/resource-not-found.exception'
 
 import { Collection } from '../../entities/collection'
 
@@ -8,7 +8,7 @@ export interface GetCollectionParams {
   ownerId: string
 }
 
-export type GetCollectionResult = Either<ResourceNotFoundError, Collection>
+export type GetCollectionResult = Either<ResourceNotFoundException, Collection>
 
 export abstract class GetCollectionGateway {
   abstract perform(params: GetCollectionParams): Promise<GetCollectionResult>

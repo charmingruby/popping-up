@@ -1,4 +1,4 @@
-import { Identifier } from './identifier'
+import { Identifier } from './identifier.entity'
 
 describe('[CORE] Identifier', () => {
   it('should be able to create an identifier without value', () => {

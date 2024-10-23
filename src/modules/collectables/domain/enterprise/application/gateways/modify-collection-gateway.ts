@@ -1,7 +1,7 @@
 import { Either } from '@/common/core/either'
-import { NothingToChangeError } from '@/common/core/errors/nothing-to-change-error'
-import { ResourceAlreadyExistsError } from '@/common/core/errors/resource-already-exists-error'
-import { ResourceNotFoundError } from '@/common/core/errors/resource-not-found-error'
+import { NothingToChangeException } from '@/common/core/exceptions/nothing-to-change.exception'
+import { ResourceAlreadyExistsException } from '@/common/core/exceptions/resource-already-exists.exception'
+import { ResourceNotFoundException } from '@/common/core/exceptions/resource-not-found.exception'
 
 export interface ModifyCollectionParams {
   ownerId: string
@@ -12,7 +12,9 @@ export interface ModifyCollectionParams {
 }
 
 export type ModifyCollectionResult = Either<
-  ResourceNotFoundError | ResourceAlreadyExistsError | NothingToChangeError,
+  | ResourceNotFoundException
+  | ResourceAlreadyExistsException
+  | NothingToChangeException,
   null
 >
 

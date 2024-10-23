@@ -1,6 +1,6 @@
 import { Optional } from '../types/optional'
-import { Entity } from './entity'
-import { Identifier } from './identifier'
+import { Entity } from './base.entity'
+import { Identifier } from './identifier.entity'
 
 interface RandomProperties {
   value: string

@@ -1,4 +1,4 @@
-import { Identifier } from './identifier'
+import { Identifier } from './identifier.entity'
 
 export class Entity<Properties> {
   private _id: Identifier

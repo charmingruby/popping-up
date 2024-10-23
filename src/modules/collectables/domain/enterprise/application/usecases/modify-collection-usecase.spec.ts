@@ -1,10 +1,10 @@
 import { makeCollection } from 'test/factories/make-collection'
 import { InMemoryCollectionsRepository } from 'test/repositories/in-memory-collections-repository'
 
-import { Identifier } from '@/common/core/entities/identifier'
-import { NothingToChangeError } from '@/common/core/errors/nothing-to-change-error'
-import { ResourceAlreadyExistsError } from '@/common/core/errors/resource-already-exists-error'
-import { ResourceNotFoundError } from '@/common/core/errors/resource-not-found-error'
+import { Identifier } from '@/common/core/entities/identifier.entity'
+import { NothingToChangeException } from '@/common/core/exceptions/nothing-to-change.exception'
+import { ResourceAlreadyExistsException } from '@/common/core/exceptions/resource-already-exists.exception'
+import { ResourceNotFoundException } from '@/common/core/exceptions/resource-not-found.exception'
 
 import { ModifyCollectionUseCase } from './modify-collection-usecase'
 
@@ -57,7 +57,7 @@ describe('[COLLECTIONS] Modify Collection Use Case', () => {
     })
 
     expect(result.isLeft()).toBeTruthy()
-    expect(result.value).toBeInstanceOf(ResourceNotFoundError)
+    expect(result.value).toBeInstanceOf(ResourceNotFoundException)
   })
 
   it("should be not able to modify a collection that the user doesn't owns", async () => {
@@ -79,7 +79,7 @@ describe('[COLLECTIONS] Modify Collection Use Case', () => {
     })
 
     expect(result.isLeft()).toBeTruthy()
-    expect(result.value).toBeInstanceOf(ResourceNotFoundError)
+    expect(result.value).toBeInstanceOf(ResourceNotFoundException)
   })
 
   it("should be not able to modify a collection that doesn't have anything to change", async () => {
@@ -97,7 +97,7 @@ describe('[COLLECTIONS] Modify Collection Use Case', () => {
     })
 
     expect(result.isLeft()).toBeTruthy()
-    expect(result.value).toBeInstanceOf(NothingToChangeError)
+    expect(result.value).toBeInstanceOf(NothingToChangeException)
   })
 
   it('should be not able to modify a collection that new name is already taken', async () => {
@@ -120,6 +120,6 @@ describe('[COLLECTIONS] Modify Collection Use Case', () => {
     })
 
     expect(result.isLeft()).toBeTruthy()
-    expect(result.value).toBeInstanceOf(ResourceAlreadyExistsError)
+    expect(result.value).toBeInstanceOf(ResourceAlreadyExistsException)
   })
 })

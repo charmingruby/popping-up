@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
 
-import { Identifier } from '@/common/core/entities/identifier'
+import { Identifier } from '@/common/core/entities/identifier.entity'
 import {
   Collection,
   CollectionProperties,

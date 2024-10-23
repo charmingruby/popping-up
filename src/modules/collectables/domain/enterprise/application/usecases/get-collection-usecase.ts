@@ -1,5 +1,5 @@
 import { left, right } from '@/common/core/either'
-import { ResourceNotFoundError } from '@/common/core/errors/resource-not-found-error'
+import { ResourceNotFoundException } from '@/common/core/exceptions/resource-not-found.exception'
 
 import {
   GetCollectionGateway,
@@ -20,7 +20,7 @@ export class GetCollectionUseCase implements GetCollectionGateway {
     )
 
     if (!collection) {
-      return left(new ResourceNotFoundError('collection'))
+      return left(new ResourceNotFoundException('collection'))
     }
 
     return right(collection)

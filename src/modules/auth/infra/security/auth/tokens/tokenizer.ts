@@ -7,7 +7,7 @@ import {
   REFRESH_TOKEN_EXPIRATION_TIME_IN_DAYS,
 } from '@/common/constants/token-expiration-time'
 import { Either, left, right } from '@/common/core/either'
-import { Identifier } from '@/common/core/entities/identifier'
+import { Identifier } from '@/common/core/entities/identifier.entity'
 import { AccountPayload } from '@/modules/auth/domain/application/logic/account-payload'
 import { AccountsRepository } from '@/modules/auth/domain/application/repositories/accounts-repository'
 

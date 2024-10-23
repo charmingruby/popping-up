@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common'
 
 import { left, right } from '@/common/core/either'
+import { ConflictException } from '@/common/core/exceptions/conflict.exception'
 
-import { ConflictError } from '../../../../../common/core/errors/conflict-error'
 import { Account } from '../../enterprise/entities/account'
 import {
   SignUpGateway,
@@ -25,13 +25,13 @@ export class SignUpUseCase implements SignUpGateway {
 
     const emailAlreadyTaken = await this.accountsRepository.findByEmail(email)
     if (emailAlreadyTaken) {
-      return left(new ConflictError('email'))
+      return left(new ConflictException('email'))
     }
 
     const usernameAlreadyTaken =
       await this.accountsRepository.findByUsername(username)
     if (usernameAlreadyTaken) {
-      return left(new ConflictError('username'))
+      return left(new ConflictException('username'))
     }
 
     const passwordHash = await this.hasher.hash(password)

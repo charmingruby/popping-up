@@ -8,8 +8,8 @@ import {
   UnauthorizedException,
 } from '@nestjs/common'
 
+import { ConflictException } from '@/common/core/exceptions/conflict.exception'
 import { IsPublic } from '@/common/decorators/is-public'
-import { ConflictError } from '@/common/core/errors/conflict-error'
 import { SignUpGateway } from '@/modules/auth/domain/application/gateways/sign-up-gateway'
 
 import { Tokenizer } from '../../security/auth/tokens/tokenizer'
@@ -29,7 +29,7 @@ export class SignUpController {
     const result = await this.useCase.perform(dto)
 
     if (result.isLeft()) {
-      if (result.value instanceof ConflictError) {
+      if (result.value instanceof ConflictException) {
         throw new UnauthorizedException({ message: result.value.message })
       }
 

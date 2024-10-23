@@ -2,7 +2,7 @@ import { makeAccount } from 'test/factories/make-account'
 import { FakeHasher } from 'test/fake/hasher'
 import { InMemoryAccountsRepository } from 'test/repositories/in-memory-accounts-repository'
 
-import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
+import { InvalidCredentialsException } from '../exceptions/invalid-credentials.exception'
 import { SignInParams } from '../gateways/sign-in-gateway'
 import { SignInUseCase } from './sign-in-usecase'
 
@@ -56,7 +56,7 @@ describe('[ACCOUNTS] Sign In Use Case', async () => {
 
     expect(result.isLeft()).toBeTruthy()
     expect(result.isRight()).toBeFalsy()
-    expect(result.value).toBeInstanceOf(InvalidCredentialsError)
+    expect(result.value).toBeInstanceOf(InvalidCredentialsException)
   })
 
   it('should be not able to sign in in an account with invalid password', async () => {
@@ -75,6 +75,6 @@ describe('[ACCOUNTS] Sign In Use Case', async () => {
 
     expect(result.isLeft()).toBeTruthy()
     expect(result.isRight()).toBeFalsy()
-    expect(result.value).toBeInstanceOf(InvalidCredentialsError)
+    expect(result.value).toBeInstanceOf(InvalidCredentialsException)
   })
 })

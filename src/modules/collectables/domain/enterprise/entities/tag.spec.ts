@@ -1,4 +1,4 @@
-import { Identifier } from '@/common/core/entities/identifier'
+import { Identifier } from '@/common/core/entities/identifier.entity'
 
 import { Tag } from './tag'
 

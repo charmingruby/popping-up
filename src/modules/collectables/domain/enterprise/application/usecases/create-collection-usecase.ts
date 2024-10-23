@@ -1,6 +1,6 @@
 import { left, right } from '@/common/core/either'
-import { Identifier } from '@/common/core/entities/identifier'
-import { ResourceAlreadyExistsError } from '@/common/core/errors/resource-already-exists-error'
+import { Identifier } from '@/common/core/entities/identifier.entity'
+import { ResourceAlreadyExistsException } from '@/common/core/exceptions/resource-already-exists.exception'
 
 import { Collection } from '../../entities/collection'
 import {
@@ -22,7 +22,7 @@ export class CreateCollectionUseCase implements CreateCollectionGateway {
       await this.collectionsRepository.findByNameAndOwnerId(name, ownerId)
 
     if (collectionAlreadyExists) {
-      return left(new ResourceAlreadyExistsError('collection'))
+      return left(new ResourceAlreadyExistsException('collection'))
     }
 
     const collection = Collection.create({

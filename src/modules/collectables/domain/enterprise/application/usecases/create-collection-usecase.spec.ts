@@ -1,8 +1,8 @@
 import { makeCollection } from 'test/factories/make-collection'
 import { InMemoryCollectionsRepository } from 'test/repositories/in-memory-collections-repository'
 
-import { Identifier } from '@/common/core/entities/identifier'
-import { ResourceAlreadyExistsError } from '@/common/core/errors/resource-already-exists-error'
+import { Identifier } from '@/common/core/entities/identifier.entity'
+import { ResourceAlreadyExistsException } from '@/common/core/exceptions/resource-already-exists.exception'
 
 import { CreateCollectionUseCase } from './create-collection-usecase'
 
@@ -48,6 +48,6 @@ describe('[COLLECTIONS] Create Collection Use Case', () => {
     })
 
     expect(result.isLeft()).toBeTruthy()
-    expect(result.value).toBeInstanceOf(ResourceAlreadyExistsError)
+    expect(result.value).toBeInstanceOf(ResourceAlreadyExistsException)
   })
 })

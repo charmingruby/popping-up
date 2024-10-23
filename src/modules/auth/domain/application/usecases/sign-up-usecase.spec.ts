@@ -2,7 +2,8 @@ import { makeAccount } from 'test/factories/make-account'
 import { FakeHasher } from 'test/fake/hasher'
 import { InMemoryAccountsRepository } from 'test/repositories/in-memory-accounts-repository'
 
-import { ConflictError } from '../../../../../common/core/errors/conflict-error'
+import { ConflictException } from '@/common/core/exceptions/conflict.exception'
+
 import { SignUpParams } from '../gateways/sign-up-gateway'
 import { SignUpUseCase } from './sign-up-usecase'
 
@@ -59,7 +60,7 @@ describe('[ACCOUNTS] Sign Up Use Case', () => {
 
     expect(result.isLeft()).toBeTruthy()
     expect(result.isRight()).toBeFalsy()
-    expect(result.value).toBeInstanceOf(ConflictError)
+    expect(result.value).toBeInstanceOf(ConflictException)
   })
 
   it('should be not able to create an account with conflict username', async () => {
@@ -77,6 +78,6 @@ describe('[ACCOUNTS] Sign Up Use Case', () => {
 
     expect(result.isLeft()).toBeTruthy()
     expect(result.isRight()).toBeFalsy()
-    expect(result.value).toBeInstanceOf(ConflictError)
+    expect(result.value).toBeInstanceOf(ConflictException)
   })
 })

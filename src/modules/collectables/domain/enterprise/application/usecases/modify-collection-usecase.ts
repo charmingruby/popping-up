@@ -1,7 +1,7 @@
 import { left, right } from '@/common/core/either'
-import { NothingToChangeError } from '@/common/core/errors/nothing-to-change-error'
-import { ResourceAlreadyExistsError } from '@/common/core/errors/resource-already-exists-error'
-import { ResourceNotFoundError } from '@/common/core/errors/resource-not-found-error'
+import { NothingToChangeException } from '@/common/core/exceptions/nothing-to-change.exception'
+import { ResourceAlreadyExistsException } from '@/common/core/exceptions/resource-already-exists.exception'
+import { ResourceNotFoundException } from '@/common/core/exceptions/resource-not-found.exception'
 
 import {
   ModifyCollectionGateway,
@@ -23,7 +23,7 @@ export class ModifyCollectionUseCase implements ModifyCollectionGateway {
       collectionId,
     )
     if (!collection) {
-      return left(new ResourceNotFoundError('collection'))
+      return left(new ResourceNotFoundException('collection'))
     }
 
     const nameChanges = collection.name !== name
@@ -32,7 +32,7 @@ export class ModifyCollectionUseCase implements ModifyCollectionGateway {
     const nothingChanges = !nameChanges && !descriptionChanges && !themeChanges
 
     if (nothingChanges) {
-      return left(new NothingToChangeError())
+      return left(new NothingToChangeException())
     }
 
     if (nameChanges) {
@@ -40,7 +40,7 @@ export class ModifyCollectionUseCase implements ModifyCollectionGateway {
         await this.collectionsRepository.findByNameAndOwnerId(name, ownerId)
 
       if (nameAlreadyTaken) {
-        return left(new ResourceAlreadyExistsError('collection'))
+        return left(new ResourceAlreadyExistsException('collection'))
       }
     }
 

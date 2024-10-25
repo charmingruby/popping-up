@@ -6,4 +6,9 @@ export abstract class CollectablesRepository {
     name: string,
     collectionId: string,
   ): Promise<Collectable | null>
+
+  abstract findByIdAndCollectionId(
+    collectableId: string,
+    collectionId: string,
+  ): Promise<Collectable | null>
 }

@@ -2,6 +2,8 @@ import { Entity } from '@/common/core/entities/base.entity'
 import { Identifier } from '@/common/core/entities/identifier.entity'
 import { Optional } from '@/common/core/types/optional'
 
+import { Reference } from './reference'
+
 export type CollectableStatus = 'ACQUIRED' | 'PENDING' | 'CANCELED'
 
 export interface CollectableProperties {
@@ -12,6 +14,8 @@ export interface CollectableProperties {
   status: CollectableStatus
   createdAt: Date
   updatedAt?: Date | null
+
+  reference?: Reference
 }
 
 export class Collectable extends Entity<CollectableProperties> {
@@ -45,6 +49,14 @@ export class Collectable extends Entity<CollectableProperties> {
 
   get updatedAt(): Date | null | undefined {
     return this.props.updatedAt
+  }
+
+  get reference() {
+    return this.props.reference
+  }
+
+  set reference(reference: Reference) {
+    this.props.reference = reference
   }
 
   static create(

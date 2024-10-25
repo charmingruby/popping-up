@@ -7,10 +7,12 @@ import {
   GetCollectableResult,
 } from '../gateways/get-collectable-gateway'
 import { CollectablesRepository } from '../repositories/collectables-repository'
+import { ReferencesRepository } from '../repositories/references-repository'
 
 export class GetCollectableUseCase implements GetCollectableGateway {
   constructor(
     private readonly collectablesRepository: CollectablesRepository,
+    private readonly referencesRepository: ReferencesRepository,
   ) {}
 
   async perform(params: GetCollectableParams): Promise<GetCollectableResult> {
@@ -25,6 +27,15 @@ export class GetCollectableUseCase implements GetCollectableGateway {
     if (!collectable) {
       return left(new ResourceNotFoundException('collectable'))
     }
+
+    const reference = await this.referencesRepository.findById(
+      collectable.referenceId,
+    )
+    if (!reference) {
+      return left(new ResourceNotFoundException('reference'))
+    }
+
+    collectable.reference = reference
 
     return right(collectable)
   }

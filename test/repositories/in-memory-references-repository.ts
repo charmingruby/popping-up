@@ -14,6 +14,16 @@ export class InMemoryReferencesRepository implements ReferencesRepository {
     return reference
   }
 
+  async findById(id: string): Promise<Reference | null> {
+    const reference = this.items.find((c) => c.id === id)
+
+    if (!reference) {
+      return null
+    }
+
+    return reference
+  }
+
   async create(reference: Reference): Promise<void> {
     this.items.push(reference)
   }

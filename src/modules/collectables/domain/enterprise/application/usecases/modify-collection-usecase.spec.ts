@@ -11,7 +11,7 @@ import { ModifyCollectionUseCase } from './modify-collection-usecase'
 let inMemoryCollectionsRepository: InMemoryCollectionsRepository
 let sut: ModifyCollectionUseCase
 
-describe('[COLLECTIONS] Modify Collection Use Case', () => {
+describe('[COLLECTABLES] Modify Collection Use Case', () => {
   beforeEach(() => {
     inMemoryCollectionsRepository = new InMemoryCollectionsRepository()
     inMemoryCollectionsRepository.items = []

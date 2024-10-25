@@ -9,7 +9,7 @@ import { GetCollectionUseCase } from './get-collection-usecase'
 let inMemoryCollectionsRepository: InMemoryCollectionsRepository
 let sut: GetCollectionUseCase
 
-describe('[COLLECTIONS] Get Collection Use Case', () => {
+describe('[COLLECTABLES] Get Collection Use Case', () => {
   beforeEach(() => {
     inMemoryCollectionsRepository = new InMemoryCollectionsRepository()
     inMemoryCollectionsRepository.items = []

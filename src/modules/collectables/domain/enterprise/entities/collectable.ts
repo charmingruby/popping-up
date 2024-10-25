@@ -2,20 +2,16 @@ import { Entity } from '@/common/core/entities/base.entity'
 import { Identifier } from '@/common/core/entities/identifier.entity'
 import { Optional } from '@/common/core/types/optional'
 
-import { Tag } from './tag'
-
 export type CollectableStatus = 'ACQUIRED' | 'PENDING' | 'CANCELED'
 
-interface CollectableProperties {
+export interface CollectableProperties {
   name: string
   description: string
   collectionId: Identifier
-  referenceId?: Identifier
+  referenceId: Identifier
   status: CollectableStatus
   createdAt: Date
   updatedAt?: Date | null
-
-  tags: Tag[]
 }
 
 export class Collectable extends Entity<CollectableProperties> {
@@ -51,23 +47,14 @@ export class Collectable extends Entity<CollectableProperties> {
     return this.props.updatedAt
   }
 
-  get tags(): Tag[] {
-    return this.props.tags
-  }
-
-  set tags(tags: Tag[]) {
-    this.props.tags = tags
-  }
-
   static create(
-    props: Optional<CollectableProperties, 'tags' | 'status' | 'createdAt'>,
+    props: Optional<CollectableProperties, 'status' | 'createdAt'>,
     id?: Identifier,
   ) {
     const collectable = new Collectable(
       {
         ...props,
         status: props.status ?? 'PENDING',
-        tags: props.tags ?? [],
         createdAt: props.createdAt ?? new Date(),
       },
       id,

@@ -49,9 +49,11 @@ describe('[COLLECTABLES] Collection Entity', () => {
       { length: collectableQuantity },
       (_, index) =>
         Collectable.create({
-          name: `tag ${index}`,
-          collectionId: new Identifier('collectionId'),
-          description: `tag description ${index}`,
+          referenceId: new Identifier('reference-id'),
+          name: `name ${index}`,
+          description: `description ${index}`,
+          ownerId,
+          collectionId: new Identifier(sut.id),
         }),
     )
 

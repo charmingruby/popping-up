@@ -68,6 +68,7 @@ export class CreateCollectableUseCase implements CreateCollectableGateway {
     await this.referencesRepository.create(reference)
 
     const collectable = Collectable.create({
+      ownerId: new Identifier(ownerId),
       name: collectableName,
       description: collectableDescription,
       collectionId: new Identifier(collectionId),

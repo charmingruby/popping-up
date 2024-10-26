@@ -11,6 +11,7 @@ export interface CollectableProperties {
   description: string
   collectionId: Identifier
   referenceId: Identifier
+  ownerId: Identifier
   status: CollectableStatus
   createdAt: Date
   updatedAt?: Date | null
@@ -29,6 +30,10 @@ export class Collectable extends Entity<CollectableProperties> {
 
   get collectionId(): string {
     return this.props.collectionId.toString
+  }
+
+  get ownerId(): string {
+    return this.props.ownerId.toString
   }
 
   get referenceId(): string {

@@ -3,6 +3,7 @@ import { Identifier } from '@/common/core/entities/identifier.entity'
 import { Collectable, CollectableStatus } from './collectable'
 
 describe('[COLLECTABLES] Collectables Entity', () => {
+  const ownerId = new Identifier('owner-id')
   const name = 'collectable name'
   const description = 'collectable description'
   const collectionId = new Identifier('collectable collectionId')
@@ -10,6 +11,7 @@ describe('[COLLECTABLES] Collectables Entity', () => {
 
   it('should create a collectable entity', () => {
     const sut = Collectable.create({
+      ownerId,
       name,
       description,
       collectionId,
@@ -20,6 +22,7 @@ describe('[COLLECTABLES] Collectables Entity', () => {
 
     expect(sut).toBeDefined()
     expect(sut.name).toEqual(name)
+    expect(sut.ownerId).toEqual(ownerId.toString)
     expect(sut.description).toEqual(description)
     expect(sut.collectionId).toEqual(collectionId.toString)
     expect(sut.referenceId).toEqual(referenceId.toString)

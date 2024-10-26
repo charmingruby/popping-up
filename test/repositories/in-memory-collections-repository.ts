@@ -1,4 +1,4 @@
-import { CollectionsRepository } from '@/modules/collectables/domain/enterprise/application/repositories/collections-repository'
+import { CollectionsRepository } from '@/modules/collectables/domain/application/repositories/collections-repository'
 import { Collection } from '@/modules/collectables/domain/enterprise/entities/collection'
 
 export class InMemoryCollectionsRepository implements CollectionsRepository {

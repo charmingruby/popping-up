@@ -24,6 +24,10 @@ export class Reference extends Entity<ReferenceProperties> {
     return this.props.url
   }
 
+  set url(url: string) {
+    this.props.url = url
+  }
+
   get priceInCents(): number {
     return this.props.priceInCents
   }

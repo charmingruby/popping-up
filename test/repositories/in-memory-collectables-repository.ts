@@ -1,8 +1,33 @@
-import { CollectablesRepository } from '@/modules/collectables/domain/enterprise/application/repositories/collectables-repository'
+import { CollectablesRepository } from '@/modules/collectables/domain/application/repositories/collectables-repository'
 import { Collectable } from '@/modules/collectables/domain/enterprise/entities/collectable'
 
 export class InMemoryCollectablesRepository implements CollectablesRepository {
   public items: Collectable[] = []
+
+  async save(collectable: Collectable): Promise<void> {
+    const index = this.items.findIndex((c) => c.id === collectable.id)
+
+    if (index !== -1) {
+      this.items[index] = collectable
+    } else {
+      this.items.push(collectable)
+    }
+  }
+
+  async findByIdAndOwnerId(
+    collectableId: string,
+    ownerId: string,
+  ): Promise<Collectable | null> {
+    const collectable = this.items.find(
+      (c) => c.id === collectableId && c.ownerId === ownerId,
+    )
+
+    if (!collectable) {
+      return null
+    }
+
+    return collectable
+  }
 
   async findByIdAndCollectionId(
     collectableId: string,

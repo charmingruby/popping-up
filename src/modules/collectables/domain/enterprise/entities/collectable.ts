@@ -64,6 +64,10 @@ export class Collectable extends Entity<CollectableProperties> {
     this.props.reference = reference
   }
 
+  isStatusValid(status: CollectableStatus): boolean {
+    return ['ACQUIRED', 'PENDING', 'CANCELED'].includes(status)
+  }
+
   static create(
     props: Optional<CollectableProperties, 'status' | 'createdAt'>,
     id?: Identifier,

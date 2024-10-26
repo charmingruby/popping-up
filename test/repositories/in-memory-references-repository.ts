@@ -1,8 +1,18 @@
-import { ReferencesRepository } from '@/modules/collectables/domain/enterprise/application/repositories/references-repository'
+import { ReferencesRepository } from '@/modules/collectables/domain/application/repositories/references-repository'
 import { Reference } from '@/modules/collectables/domain/enterprise/entities/reference'
 
 export class InMemoryReferencesRepository implements ReferencesRepository {
   public items: Reference[] = []
+
+  async save(reference: Reference): Promise<void> {
+    const index = this.items.findIndex((c) => c.id === reference.id)
+
+    if (index !== -1) {
+      this.items[index] = reference
+    } else {
+      this.items.push(reference)
+    }
+  }
 
   async findByTitle(title: string): Promise<Reference | null> {
     const reference = this.items.find((c) => c.title === title)

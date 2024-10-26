@@ -2,7 +2,7 @@ import { left, right } from '@/common/core/either'
 import { Identifier } from '@/common/core/entities/identifier.entity'
 import { ResourceAlreadyExistsException } from '@/common/core/exceptions/resource-already-exists.exception'
 
-import { Collection } from '../../entities/collection'
+import { Collection } from '../../enterprise/entities/collection'
 import {
   CreateCollectionGateway,
   CreateCollectionParams,

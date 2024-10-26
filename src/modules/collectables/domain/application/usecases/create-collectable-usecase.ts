@@ -3,8 +3,8 @@ import { Identifier } from '@/common/core/entities/identifier.entity'
 import { ResourceAlreadyExistsException } from '@/common/core/exceptions/resource-already-exists.exception'
 import { ResourceNotFoundException } from '@/common/core/exceptions/resource-not-found.exception'
 
-import { Collectable } from '../../entities/collectable'
-import { Reference } from '../../entities/reference'
+import { Collectable } from '../../enterprise/entities/collectable'
+import { Reference } from '../../enterprise/entities/reference'
 import {
   CreateCollectableGateway,
   CreateCollectableParams,

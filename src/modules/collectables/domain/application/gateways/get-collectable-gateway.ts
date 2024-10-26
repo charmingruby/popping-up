@@ -1,7 +1,7 @@
 import { Either } from '@/common/core/either'
 import { ResourceNotFoundException } from '@/common/core/exceptions/resource-not-found.exception'
 
-import { Collectable } from '../../entities/collectable'
+import { Collectable } from '../../enterprise/entities/collectable'
 
 export interface GetCollectableParams {
   collectableId: string

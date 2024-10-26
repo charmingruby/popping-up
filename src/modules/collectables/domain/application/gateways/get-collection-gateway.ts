@@ -1,7 +1,7 @@
 import { Either } from '@/common/core/either'
 import { ResourceNotFoundException } from '@/common/core/exceptions/resource-not-found.exception'
 
-import { Collection } from '../../entities/collection'
+import { Collection } from '../../enterprise/entities/collection'
 
 export interface GetCollectionParams {
   collectionId: string

@@ -4,6 +4,10 @@ import { Collection } from '@/modules/collectables/domain/enterprise/entities/co
 export class InMemoryCollectionsRepository implements CollectionsRepository {
   public items: Collection[] = []
 
+  async findManyByOwnerId(ownerId: string): Promise<Collection[]> {
+    return this.items.filter((c) => c.ownerId === ownerId)
+  }
+
   async findByNameAndOwnerId(
     name: string,
     ownerId: string,

@@ -11,6 +11,8 @@ export abstract class CollectionsRepository {
     collectionId: string,
   ): Promise<Collection | null>
 
+  abstract findManyByOwnerId(ownerId: string): Promise<Collection[]>
+
   abstract create(collection: Collection): Promise<void>
   abstract save(collection: Collection): Promise<void>
 }

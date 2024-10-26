@@ -4,6 +4,15 @@ import { Collectable } from '@/modules/collectables/domain/enterprise/entities/c
 export class InMemoryCollectablesRepository implements CollectablesRepository {
   public items: Collectable[] = []
 
+  async findManyByOwnerIdAndCollectionId(
+    ownerId: string,
+    collectionId: string,
+  ): Promise<Collectable[]> {
+    return this.items.filter(
+      (c) => c.ownerId === ownerId && c.collectionId === collectionId,
+    )
+  }
+
   async save(collectable: Collectable): Promise<void> {
     const index = this.items.findIndex((c) => c.id === collectable.id)
 

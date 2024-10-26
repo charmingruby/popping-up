@@ -17,5 +17,10 @@ export abstract class CollectablesRepository {
     ownerId: string,
   ): Promise<Collectable | null>
 
+  abstract findManyByOwnerIdAndCollectionId(
+    ownerId: string,
+    collectionId: string,
+  ): Promise<Collectable[]>
+
   abstract save(collectable: Collectable): Promise<void>
 }

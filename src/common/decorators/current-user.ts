@@ -9,8 +9,12 @@ interface Payload {
   username: string
 }
 
-export const ActiverUserId = createParamDecorator(
-  (_, context: ExecutionContext) => {
+export interface CurrentUserPayload extends Payload {
+  userId: string
+}
+
+export const CurrentUser = createParamDecorator(
+  (_, context: ExecutionContext): CurrentUserPayload => {
     const request = context.switchToHttp().getRequest()
 
     const userId = request.userId
@@ -26,7 +30,8 @@ export const ActiverUserId = createParamDecorator(
 
     return {
       userId,
-      payload,
+      email: payload.email,
+      username: payload.username,
     }
   },
 )

@@ -12,7 +12,7 @@ import { IsPublic } from '@/common/decorators/is-public'
 import { InvalidCredentialsException } from '@/modules/auth/domain/application/exceptions/invalid-credentials.exception'
 import { SignInGateway } from '@/modules/auth/domain/application/gateways/sign-in.gateway'
 
-import { Tokenizer } from '../../security/auth/tokens/tokenizer'
+import { Tokenizer } from '../../../security/auth/tokens/tokenizer'
 import { SignInDto } from '../dto/sign-in.dto'
 
 @Controller()

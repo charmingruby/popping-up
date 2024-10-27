@@ -10,8 +10,8 @@ import {
 
 import { IsPublic } from '@/common/decorators/is-public'
 
-import { InvalidTokenError } from '../../security/auth/tokens/errors/invalid-token-error'
-import { Tokenizer } from '../../security/auth/tokens/tokenizer'
+import { InvalidTokenError } from '../../../security/auth/tokens/errors/invalid-token-error'
+import { Tokenizer } from '../../../security/auth/tokens/tokenizer'
 import { RefreshDto } from '../dto/refresh.dto'
 
 @Controller()

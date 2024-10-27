@@ -4,11 +4,11 @@ import { JwtModule } from '@nestjs/jwt'
 
 import jwtConfig from '@/config/jwt.config'
 
-import { AuthHttpModule } from './infra/http/auth-http.module'
+import { AuthRestModule } from './infra/http/rest/auth-rest.module'
 
 @Module({
   imports: [
-    AuthHttpModule,
+    AuthRestModule,
     JwtModule.registerAsync({
       global: true,
       imports: [

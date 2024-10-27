@@ -12,7 +12,7 @@ import { ConflictException } from '@/common/core/exceptions/conflict.exception'
 import { IsPublic } from '@/common/decorators/is-public'
 import { SignUpGateway } from '@/modules/auth/domain/application/gateways/sign-up.gateway'
 
-import { Tokenizer } from '../../security/auth/tokens/tokenizer'
+import { Tokenizer } from '../../../security/auth/tokens/tokenizer'
 import { SignUpDto } from '../dto/sign-up.dto'
 
 @Controller()

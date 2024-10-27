@@ -4,7 +4,7 @@ import { Identifier } from '@/common/core/entities/identifier.entity'
 import {
   Reference,
   ReferenceProperties,
-} from '@/modules/collectables/domain/enterprise/entities/reference'
+} from '@/modules/collectables/domain/enterprise/entities/reference.entity'
 
 export function makeReference(
   override: Partial<ReferenceProperties> = {},

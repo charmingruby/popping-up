@@ -9,7 +9,7 @@ import {
 import { Either, left, right } from '@/common/core/either'
 import { Identifier } from '@/common/core/entities/identifier.entity'
 import { AccountPayload } from '@/modules/auth/domain/application/logic/account-payload'
-import { AccountsRepository } from '@/modules/auth/domain/application/repositories/accounts-repository'
+import { AccountsRepository } from '@/modules/auth/domain/application/repositories/accounts.repository'
 
 import { InvalidTokenError } from './errors/invalid-token-error'
 import { RefreshToken, RefreshTokenRepository } from './refresh-token'

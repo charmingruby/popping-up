@@ -4,7 +4,7 @@ import { Identifier } from '@/common/core/entities/identifier.entity'
 import {
   Collectable,
   CollectableProperties,
-} from '@/modules/collectables/domain/enterprise/entities/collectable'
+} from '@/modules/collectables/domain/enterprise/entities/collectable.entity'
 
 export function makeCollectable(
   override: Partial<CollectableProperties> = {},

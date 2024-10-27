@@ -4,7 +4,7 @@ import { Identifier } from '@/common/core/entities/identifier.entity'
 import {
   Collection,
   CollectionProperties,
-} from '@/modules/collectables/domain/enterprise/entities/collection'
+} from '@/modules/collectables/domain/enterprise/entities/collection.entity'
 
 export function makeCollection(
   override: Partial<CollectionProperties> = {},

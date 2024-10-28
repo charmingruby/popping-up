@@ -8,12 +8,10 @@ import databaseConfig from './config/database.config'
 import { validateEnvironment } from './config/environment-validation'
 import { AuthModule } from './modules/auth/auth.module'
 import { AuthGuard } from './modules/auth/infra/security/auth/guards/auth.guard'
-import { CollectablesModule } from './modules/collectables/collectables.module'
 
 @Module({
   imports: [
     AuthModule,
-    CollectablesModule,
     ConfigModule.forRoot({
       validationSchema: validateEnvironment(),
       isGlobal: true,

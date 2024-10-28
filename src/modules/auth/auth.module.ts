@@ -4,7 +4,7 @@ import { JwtModule } from '@nestjs/jwt'
 
 import jwtConfig from '@/config/jwt.config'
 
-import { AuthRestModule } from './infra/http/rest/auth-rest.module'
+import { AuthRestModule } from './http/rest/auth-rest.module'
 
 @Module({
   imports: [

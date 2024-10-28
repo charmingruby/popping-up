@@ -8,14 +8,14 @@ import {
 } from '@/common/constants/token-expiration-time'
 import { Either, left, right } from '@/common/core/either'
 import { Identifier } from '@/common/core/entities/identifier.entity'
-import { AccountPayload } from '@/modules/auth/domain/application/logic/account-payload'
-import { AccountsRepository } from '@/modules/auth/domain/application/repositories/accounts.repository'
+import { AccountPayload } from '@/modules/auth/core/application/logic/account-payload'
+import { AccountsRepository } from '@/modules/auth/core/application/repositories/accounts.repository'
 
-import { InvalidTokenError } from './errors/invalid-token-error'
+import { InvalidTokenException } from './exceptions/invalid-token.exception'
 import { RefreshToken, RefreshTokenRepository } from './refresh-token'
 
 export type RefreshTokenResult = Either<
-  Error | InvalidTokenError,
+  Error | InvalidTokenException,
   { accessToken: string; refreshToken: string }
 >
 
@@ -59,13 +59,13 @@ export class Tokenizer {
       const refreshToken =
         await this.refreshTokensRepository.findById(refreshTokenId)
       if (!refreshToken) {
-        return left(new InvalidTokenError('refresh'))
+        return left(new InvalidTokenException('refresh'))
       }
 
       await this.refreshTokensRepository.deleteById(refreshTokenId)
 
       if (Date.now() > refreshToken.expiresAt.getTime()) {
-        return left(new InvalidTokenError('refresh'))
+        return left(new InvalidTokenException('refresh'))
       }
 
       const account = await this.accountsRepository.findById(

@@ -1,5 +1,5 @@
 import { AccountsRepository } from '@/modules/auth/domain/application/repositories/accounts.repository'
-import { Account } from '@/modules/auth/domain/enterprise/entities/account.entity'
+import { Account } from '@/modules/auth/core/entities/account.entity'
 
 export class InMemoryAccountsRepository implements AccountsRepository {
   public items: Account[] = []
